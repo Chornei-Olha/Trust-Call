@@ -234,14 +234,6 @@ const TrustCallLandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black text-white font-inter overflow-x-hidden">
-      {/* Scrolling Text Banner */}
-      {/* <div className="w-full bg-black py-2 overflow-hidden">
-        <div className="animate-pulse">
-          <p className="text-[20px] sm:text-[25px] md:text-[31px] font-medium uppercase text-white text-center tracking-wider">
-            TRUST-CALL • TRUST-CALL • TRUST-CALL • TRUST-CALL • TRUST-CALL • TRUST-CALL
-          </p>
-        </div>
-      </div> */}
       <HeroSection />
       <WhyTrustCall />
       <HowToStartSection />

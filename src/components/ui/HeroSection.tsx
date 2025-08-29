@@ -91,8 +91,8 @@ export default function HeroSection() {
           <Image
             src="/images/img_png_webp.png"
             alt="Ukrposhta"
-            width={200}
-            height={52}
+            width={500}
+            height={152}
             className="h-[40px] sm:h-[45px] md:h-[52px] w-auto"
           />
           <Image

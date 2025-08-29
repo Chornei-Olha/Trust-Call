@@ -91,13 +91,14 @@ export default function WhyTrustCall() {
 
               {/* Карточка */}
               <div className="bg-[#0000004c] border border-white/40 rounded-[32px] sm:rounded-[40px] md:rounded-[48px] p-6 sm:p-8 md:p-12 shadow-2xl">
-                <div className="absolute top-4 right-4 w-12 h-12">
+                <h4 className=""> {f.title}</h4>
+                <div className="absolute top-4 right-4 w-[20%] h-auto">
                   <Image
-                    src="/images/small_icon.png"
+                    src="/images/blackBg.png"
                     alt="icon"
-                    width={48}
-                    height={48}
-                    className="w-full h-full object-contain"
+                    width={1009}
+                    height={766}
+                    className="w-[auto] h-[auto] object-contain"
                   />
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
