@@ -5,7 +5,7 @@ import Button from '../ui/Button'; // путь поправь под свой п
 
 export default function Header() {
   return (
-    <header className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+    <header className="bg-black/40 backdrop-blur-[5px] z-[9999] w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6 fixed">
       <div className="max-w-[1440px] mx-auto flex justify-between items-center">
         {/* Логотип / название */}
         <div className="text-[20px] sm:text-[24px] md:text-[30px] font-medium text-white uppercase tracking-wider">

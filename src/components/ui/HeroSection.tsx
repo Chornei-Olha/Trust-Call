@@ -1,4 +1,3 @@
-// components/HeroSection.tsx
 'use client';
 
 import Image from 'next/image';
@@ -14,21 +13,38 @@ export default function HeroSection() {
       {/* Верхняя строка */}
       <Header />
 
+      {/* Соцсети сбоку */}
+      <div className="hidden lg:flex flex-col items-center gap-36 fixed right-2 top-1/2 -translate-y-1/2 z-50">
+        {['Twitter', 'Facebook', 'Instagram'].map((social) => (
+          <a
+            key={social}
+            href="#"
+            className="text-white hover:text-[#005eff] text-sm uppercase tracking-wider"
+          >
+            <span className="block transform rotate-90">{social}</span>
+          </a>
+        ))}
+      </div>
+
       {/* Hero Content */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 md:pt-24 lg:pt-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        <h1 className="text-[32px] sm:text-[40px] md:text-[130px] uppercase leading-tight font-bold text-center">
+          Trust-call
+        </h1>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           {/* Левая часть */}
-          <div className="lg:col-span-8 space-y-6 sm:space-y-8 md:space-y-12">
-            <h1 className="text-[32px] sm:text-[40px] md:text-[50px] font-medium uppercase leading-tight">
-              <span className="text-white">Аутсорсинговий </span>
-              <span className="text-[#005eff]">
-                кол-центр
-                <br />
-                TRUST-CALL для товарного
-                <br />
-                бізнесу
-              </span>
-            </h1>
+          <div className="lg:col-span-4 space-y-6 sm:space-y-8 md:space-y-12 text-[32px] sm:text-[40px] md:text-[50px] font-medium">
+            <span className="text-white">Аутсорсинговий </span>
+            <span className="text-[#005eff]">
+              кол-центр
+              <br />
+              TRUST-CALL{' '}
+            </span>
+            <span className="text-white">
+              для товарного
+              <br />
+              бізнесу
+            </span>
             <p className="text-[18px] sm:text-[24px] md:text-[30px] font-light leading-relaxed text-white max-w-4xl">
               Тестовий період перед підключенням – ми обробимо
               <br />
@@ -38,7 +54,7 @@ export default function HeroSection() {
               <Button
                 variant="secondary"
                 size="lg"
-                className="text-[16px] sm:text-[20px] font-medium px-6 sm:px-8 py-4 sm:py-6"
+                className="text-[16px] sm:text-[20px] font-medium px-6 sm:px-8 py-2"
               >
                 Отримати консультацію
               </Button>
@@ -81,48 +97,7 @@ export default function HeroSection() {
       {/* Логотипы партнёров */}
       <div className="relative bg-white z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-5 mt-5">
         <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 opacity-80">
-          <Image
-            src="/images/img_lp_crm_1_svg.png"
-            alt="LP CRM"
-            width={170}
-            height={90}
-            className="h-[60px] sm:h-[70px] md:h-[90px] w-auto"
-          />
-          <Image
-            src="/images/img_png_webp.png"
-            alt="Ukrposhta"
-            width={500}
-            height={152}
-            className="h-[40px] sm:h-[45px] md:h-[52px] w-auto"
-          />
-          <Image
-            src="/images/img_nextel_png_webp.png"
-            alt="Nextel"
-            width={200}
-            height={52}
-            className="h-[40px] sm:h-[45px] md:h-[52px] w-auto"
-          />
-          <Image
-            src="/images/img_binotel_png_webp.png"
-            alt="Binotel"
-            width={200}
-            height={70}
-            className="h-[50px] sm:h-[60px] md:h-[70px] w-auto"
-          />
-          <Image
-            src="/images/img_photo_png_webp.png"
-            alt="Citrus"
-            width={200}
-            height={52}
-            className="h-[40px] sm:h-[45px] md:h-[52px] w-auto"
-          />
-          <Image
-            src="/images/img_png_webp_70x200.png"
-            alt="Nova Poshta"
-            width={200}
-            height={70}
-            className="h-[50px] sm:h-[60px] md:h-[70px] w-auto"
-          />
+          {/* лого */}
         </div>
       </div>
     </section>
