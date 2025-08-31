@@ -70,20 +70,26 @@ const ProfitForm = () => {
           </div>
 
           {/* Button */}
-          <div className="flex justify-center md:justify-start">
+          <div className="hidden lg:flex flex-col items-center -gap-16">
             <Button
-              type="submit"
               variant="brand"
-              size="lg"
-              className="w-full md:w-auto text-[16px] font-medium uppercase px-8 py-6 shadow-2xl"
+              size="sm"
+              className="text-[8px] font-bold uppercase tracking-wider px-3 py-3"
             >
-              Замовити консультацію
+              замовити консультацію
             </Button>
+            <Image
+              src="/images/img_klipartz_24.png"
+              alt="decoration"
+              width={160}
+              height={18}
+              className="w-[80px] sm:w-[120px] md:w-[160px] h-auto"
+            />
           </div>
         </div>
 
         {/* другий рядок (знижка + декор) */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-between">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-start">
           <div className="bg-white rounded-[22px] px-6 py-2 text-center sm:text-left">
             <span className="text-[24px] sm:text-[27px] font-semibold text-black">Знижка 10%</span>
           </div>
@@ -92,13 +98,6 @@ const ProfitForm = () => {
               на перший рахунок для нових клієнтів
             </span>
           </div>
-          <Image
-            src="/images/img_klipartz_24.png"
-            alt="decoration"
-            width={160}
-            height={18}
-            className="w-[120px] sm:w-[160px] h-auto"
-          />
         </div>
       </form>
     </div>

@@ -135,20 +135,20 @@ export default function FinalCTA() {
                     ))}
                   </div>
                 </div>
-                <div className="pt-6">
+                <div className="hidden lg:flex flex-col items-center -gap-16">
                   <Button
                     variant="brand"
-                    size="xl"
-                    className="text-[14px] sm:text-[16px] font-medium uppercase shadow-2xl mb-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:opacity-90"
+                    size="sm"
+                    className="text-[8px] font-bold uppercase tracking-wider px-3 py-3"
                   >
-                    Замовити консультацію
+                    замовити консультацію
                   </Button>
                   <Image
                     src="/images/img_klipartz_24.png"
                     alt="decoration"
                     width={160}
                     height={18}
-                    className="w-[120px] sm:w-[160px] h-auto mx-auto"
+                    className="w-[80px] sm:w-[120px] md:w-[160px] h-auto"
                   />
                 </div>
               </div>

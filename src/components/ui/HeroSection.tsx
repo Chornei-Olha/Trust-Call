@@ -14,21 +14,29 @@ export default function HeroSection() {
       <Header />
 
       {/* Соцсети сбоку */}
-      <div className="hidden lg:flex flex-col items-center gap-36 fixed right-2 top-1/2 -translate-y-1/2 z-50">
-        {['Twitter', 'Facebook', 'Instagram'].map((social) => (
+
+      <div className="absolute right-[25px] top-1/2 transform -translate-y-1/2 hidden md:flex flex-col items-center gap-[46px] bg-black/10 rounded-[36px] px-[15px] py-[25px] z-20">
+        {[
+          { text: 'TWITTER', href: 'https://x.com/' },
+          { text: 'FACEBOOK', href: 'https://www.facebook.com/' },
+          { text: 'INSTAGRAM', href: 'https://instagram.com/yourprofile' },
+        ].map(({ text, href }, idx) => (
           <a
-            key={social}
-            href="#"
-            className="text-white hover:text-[#005eff] text-sm uppercase tracking-wider"
+            key={idx}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] font-krona-one font-normal font-montserrat leading-[15px] text-center text-global-10 hover:underline"
+            style={{ writingMode: 'vertical-rl' }}
           >
-            <span className="block transform rotate-90">{social}</span>
+            {text}
           </a>
         ))}
       </div>
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <h1 className="text-[32px] sm:text-[40px] md:text-[130px] uppercase leading-tight font-bold text-center">
+        <h1 className="text-[50px] sm:text-[80px] md:text-[130px] uppercase leading-tight font-bold text-center">
           Trust-call
         </h1>
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
@@ -65,9 +73,9 @@ export default function HeroSection() {
                       key={n}
                       src={`/images/img_ellipse_${n}_54x54.png`}
                       alt={`client-${n}`}
-                      width={54}
-                      height={54}
-                      className="w-[40px] sm:w-[54px] h-[40px] sm:h-[54px] rounded-full border-2 border-white"
+                      width={200}
+                      height={200}
+                      className="w-[40px] sm:w-[54px] h-[auto] rounded-full border-2 border-white"
                     />
                   ))}
                 </div>
@@ -95,9 +103,51 @@ export default function HeroSection() {
       </div>
 
       {/* Логотипы партнёров */}
-      <div className="relative bg-white z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-5 mt-5">
+      <div className="relative bg-white z-10 mx-auto px-4 sm:px-6 lg:px-8 py-5 mt-5">
         <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 opacity-80">
           {/* лого */}
+          <Image
+            src="/images/partner.svg"
+            alt="Trust-call platform"
+            width={266}
+            height={266}
+            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
+          />
+          <Image
+            src="/images/partner2.svg"
+            alt="Trust-call platform"
+            width={266}
+            height={266}
+            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
+          />
+          <Image
+            src="/images/partner3.svg"
+            alt="Trust-call platform"
+            width={266}
+            height={266}
+            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
+          />
+          <Image
+            src="/images/partner4.svg"
+            alt="Trust-call platform"
+            width={266}
+            height={266}
+            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
+          />
+          <Image
+            src="/images/partner5.svg"
+            alt="Trust-call platform"
+            width={266}
+            height={266}
+            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
+          />
+          <Image
+            src="/images/partner6.svg"
+            alt="Trust-call platform"
+            width={266}
+            height={266}
+            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
+          />
         </div>
       </div>
     </section>

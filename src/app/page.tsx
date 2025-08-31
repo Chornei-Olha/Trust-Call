@@ -110,7 +110,7 @@ const TrustCallLandingPage: React.FC = () => {
   const caseStudies: CaseStudy[] = [
     {
       id: 'bedding',
-      title: 'Продаж комплектів постільної білизни',
+      title: 'Продаж постільної білизни',
       category: '(Інтернет-магазин)',
       beforeStats: {
         approval: '72%',

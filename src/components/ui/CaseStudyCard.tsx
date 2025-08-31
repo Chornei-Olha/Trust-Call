@@ -51,7 +51,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
         </div>
 
         {/* Таблица показателей */}
-        <div className="space-y-3">
+        <div className="space-y-0">
           <div className="bg-white rounded-[10px] px-6 py-3">
             <div className="flex justify-between items-center">
               <span className="text-[14px] text-black">Показник</span>
@@ -91,7 +91,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
             РАЗОМ
           </Button>
 
-          <div className="text-left space-y-1 px-3">
+          <div className="text-left space-y-1 px-3 py-5">
             <p className="text-[14px] font-medium text-[#404040]">
               <span>Збільшили чистий прибуток: </span>
               <span className="text-[#1663d3] font-semibold">{study.results.profitIncrease}</span>

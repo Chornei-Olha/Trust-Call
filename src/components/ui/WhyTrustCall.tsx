@@ -14,9 +14,9 @@ const features = [
     ),
     text: `Швидкість прийому заявки не більше 5 хвилин! Кожна заявка проходить весь цикл
     продзвону та додаткових методів опрацювання для отримання максимального показника апруву.`,
-    image: '/images/img_67b722e8ef105f2.png',
-    deco: '/images/img_pawn.png',
-    align: 'left',
+    image: '/images/forCard1.png',
+    deco: '/images/img_pawn_left.svg',
+    align: 'right',
   },
   {
     id: 2,
@@ -29,9 +29,9 @@ const features = [
     ),
     text: `Завдяки унікальним скриптам під кожен товар, ми маємо найкращі показники
     серед конкурентів щодо відсотка та середнього чека з допродажів товарів.`,
-    image: '/images/img_67b722e9f65e8ef.png',
-    deco: '/images/img_pawn.png',
-    align: 'right',
+    image: '/images/forCard2.png',
+    deco: '/images/img_pawn_left.svg',
+    align: 'left',
   },
   {
     id: 3,
@@ -44,9 +44,9 @@ const features = [
     text: `В команді Trust-call, тільки професійні менеджери, які чудово знають свою справу!
     Витрачайте свій дорогоцінний час на оптимізацію та масштабування власного бізнесу.
     Найголовніше для нас – це довгострокові відносини з партнерами.`,
-    image: '/images/img_67b722e807a93ac.png',
-    deco: '/images/img_pawn.png',
-    align: 'left',
+    image: '/images/forCard3.png',
+    deco: '/images/img_pawn_right.svg',
+    align: 'right',
   },
 ];
 
@@ -54,12 +54,22 @@ export default function WhyTrustCall() {
   return (
     <section className="w-full bg-black py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-visible">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="absolute -left-[100px]">
+          {' '}
+          <Image
+            src="/images/telegram-icon.svg"
+            alt="decoration"
+            width={300}
+            height={300}
+            className="inline-block mx-4 w-[100px] sm:w-[200px] md:w-[300px] h-auto"
+          />
+        </div>
         {/* Заголовок */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <h2 className="text-[40px] sm:text-[50px] md:text-[64px] font-normal uppercase leading-tight mb-4">
             <span className="text-white">Чому саме </span>
             <Image
-              src="/images/img_image.png"
+              src="/images/img_image.svg"
               alt="decoration"
               width={260}
               height={74}
@@ -75,7 +85,7 @@ export default function WhyTrustCall() {
         {/* Features */}
         <div className="space-y-16 sm:space-y-20 md:space-y-24">
           {features.map((f, i) => (
-            <div key={f.id} className="relative">
+            <div key={f.id} className="relative z-10">
               {/* Декоративная пешка */}
               <motion.div
                 initial={{ opacity: 0, x: f.align === 'left' ? -40 : 40 }}
@@ -83,22 +93,23 @@ export default function WhyTrustCall() {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.8, delay: i * 0.2 }}
                 className={`absolute top-1/2 -translate-y-1/2 hidden md:block ${
-                  f.align === 'left' ? '-left-10' : '-right-10'
+                  f.align === 'left' ? '-left-16' : '-right-16'
                 }`}
               >
-                <Image src={f.deco} alt="deco" width={60} height={60} className="opacity-80" />
+                <Image src={f.deco} alt="deco" width={204} height={204} className="opacity-80" />
               </motion.div>
 
               {/* Карточка */}
-              <div className="bg-[#0000004c] border border-white/40 rounded-[32px] sm:rounded-[40px] md:rounded-[48px] p-6 sm:p-8 md:p-12 shadow-2xl">
-                <h4 className=""> {f.title}</h4>
-                <div className="absolute top-4 right-4 w-[20%] h-auto">
+              <div className="bg-[#0000004c] border border-white/40 rounded-[32px] sm:rounded-[40px] md:rounded-[48px] p-6 sm:p-8 md:p-12 shadow-[0_0_8px_2px_#51CBEE]">
+                <h4 className="mb-5"> {f.title}</h4>
+
+                <div className="absolute top-4 right-4 w-[20%] h-auto z-0">
                   <Image
                     src="/images/blackBg.png"
                     alt="icon"
                     width={1009}
                     height={766}
-                    className="w-[auto] h-[auto] object-contain"
+                    className="max-w-[80px] sm:max-w-[150px] lg:max-w-[240px] w-[auto] h-[auto] object-contain"
                   />
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -114,10 +125,8 @@ export default function WhyTrustCall() {
                   </div>
 
                   {/* Текст */}
-                  <div
-                    className={`bg-gradient-to-r from-[#2c2c2c] to-[#0a0a0a] border border-white/5 rounded-[22px] p-6 sm:p-8 ${f.align === 'right' ? 'lg:order-1' : ''}`}
-                  >
-                    <p className="text-[15px] sm:text-[17px] text-white/50 leading-relaxed">
+                  <div className={`${f.align === 'right' ? 'lg:order-1' : ''}`}>
+                    <p className="text-[15px] sm:text-[17px] text-white/50 leading-relaxed relative z-10">
                       {f.text}
                     </p>
                   </div>

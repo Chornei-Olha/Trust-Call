@@ -16,25 +16,25 @@ const steps: Step[] = [
     title: 'Співпраця',
     description:
       'Ми блискавично вам телефонуємо та даємо покрокову інструкцію, аби ви могли максимально швидко делегувати на нас всю рутинну роботу із продзвоном ваших замовлень',
-    imgSrc: '/images/img_rectangle_85.png',
+    imgSrc: '/images/faq.png',
   },
   {
     id: 2,
     title: 'Консультуємо та допомогаємо в налаштуванні CRM',
     description: 'Пояснення та деталі про настройку CRM.',
-    imgSrc: '/images/img_rectangle_85.png',
+    imgSrc: '/images/faq.png',
   },
   {
     id: 3,
     title: 'Обробляємо ліди без вихідних',
     description: 'Весь процес обробки лідів описан здесь.',
-    imgSrc: '/images/img_rectangle_85.png',
+    imgSrc: '/images/faq.png',
   },
   {
     id: 4,
     title: 'Оплата тільки за підтверджені замовлення',
     description: 'Оплата відбувається лише за підтверджені замовлення.',
-    imgSrc: '/images/img_rectangle_85.png',
+    imgSrc: '/images/faq.png',
   },
 ];
 
