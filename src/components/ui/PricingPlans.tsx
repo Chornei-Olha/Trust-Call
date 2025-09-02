@@ -1,10 +1,13 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Button from '@/components/ui/Button';
+import { useInView } from 'react-intersection-observer';
 
 interface PricingPlan {
   id: string;
@@ -13,6 +16,7 @@ interface PricingPlan {
   features: string[];
   buttonText: string;
   isPopular?: boolean;
+  percent?: number;
 }
 
 const pricingPlans: PricingPlan[] = [
@@ -20,6 +24,7 @@ const pricingPlans: PricingPlan[] = [
     id: 'start',
     name: 'Start',
     icon: '/images/vr-1.png',
+    percent: 31,
     features: [
       'Кількість лідів на день: 30–50',
       'Персональний менеджер: 24/7',
@@ -34,6 +39,9 @@ const pricingPlans: PricingPlan[] = [
     id: 'company',
     name: 'Company',
     icon: '/images/vr-2.png',
+    percent: 45,
+    buttonText: 'Підключити послугу',
+    isPopular: true,
     features: [
       'Кількість лідів на день: 50–100',
       'Персональний менеджер: 24/7',
@@ -42,13 +50,13 @@ const pricingPlans: PricingPlan[] = [
       'Підтверджене замовлення: 20 грн',
       'Допродаж (Upsell, Cross-sell): 22%',
     ],
-    buttonText: 'Підключити послугу',
-    isPopular: true,
   },
   {
     id: 'business',
     name: 'Business',
     icon: '/images/vr-3.png',
+    percent: 24,
+    buttonText: 'Підключити послугу',
     features: [
       'Кількість лідів на день: 100+',
       'Персональний менеджер: 24/7',
@@ -57,7 +65,6 @@ const pricingPlans: PricingPlan[] = [
       'Підтверджене замовлення: 18 грн',
       'Допродаж (Upsell, Cross-sell): 22%',
     ],
-    buttonText: 'Підключити послугу',
   },
 ];
 
@@ -65,7 +72,6 @@ const PricingPlans: React.FC = () => {
   return (
     <section className="w-full bg-black py-16 sm:py-20 md:py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Заголовок */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[40px] sm:text-[48px] md:text-[55px] font-medium uppercase text-white leading-tight">
             ТАРИФНІ ПЛАНИ
@@ -101,24 +107,81 @@ const PricingPlans: React.FC = () => {
 
 // ===== Карточка тарифа =====
 const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.15 }); // 👈
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (!plan.percent) return;
+    if (inView) {
+      let current = 0;
+      const interval = setInterval(() => {
+        current += 1;
+        setProgress(current);
+        if (current >= plan.percent) clearInterval(interval);
+      }, 25);
+      return () => clearInterval(interval);
+    } else {
+      // сброс, чтобы при повторном появлении снова анимировалось
+      setProgress(0);
+    }
+  }, [inView, plan.percent]);
+
+  const radius = 48;
+  const strokeWidth = 6;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (progress / 100) * circumference;
+
   return (
     <div
-      className={`relative rounded-[40px] bg-white border border-white/10 p-8 flex flex-col h-full transition-transform`}
+      ref={ref}
+      className="relative rounded-[40px] bg-white border border-white/10 p-8 flex flex-col h-full transition-transform"
     >
       {/* Процент выбора */}
-      <div className="absolute -top-16 left-1/4 translate-x-1/2 w-[200px] h-[auto] flex items-center justify-center">
-        <Image
-          src={plan.icon}
-          alt={plan.name}
-          width={117}
-          height={117}
-          className="object-contain"
-        />
-      </div>
+      {plan.percent ? (
+        <div className="absolute -top-20 left-1/2 -translate-x-1/2 flex items-center justify-center">
+          <div className="relative w-[120px] h-[120px] flex items-center justify-center bg-white rounded-full">
+            <svg width="120" height="120" className="transform -rotate-90">
+              <circle
+                cx="60"
+                cy="60"
+                r={radius}
+                stroke="#e5e7eb"
+                strokeWidth={strokeWidth}
+                fill="transparent"
+              />
+              <circle
+                cx="60"
+                cy="60"
+                r={radius}
+                stroke="#1f23f0"
+                strokeWidth={strokeWidth}
+                fill="transparent"
+                strokeDasharray={circumference}
+                strokeDashoffset={offset}
+                strokeLinecap="round"
+              />
+            </svg>
+            <div className="absolute text-center">
+              <p className="text-2xl font-bold text-black">{progress}%</p>
+              <p className="text-xs text-gray-500">обирають наші клієнти</p>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2">
+          <Image
+            src={plan.icon}
+            alt={plan.name}
+            width={117}
+            height={117}
+            className="object-contain"
+          />
+        </div>
+      )}
 
-      <div className="bg-black rounded-[44px]">
+      <div className="bg-black rounded-[44px] hover:bg-[#1663D3]">
         {/* Аватарки */}
-        <div className="flex justify-left -space-x-2 mt-8 mb-6 pl-5">
+        <div className="flex justify-left -space-x-2 mt-20 mb-6 pl-5">
           {[1, 2, 3, 4].map((i) => (
             <Image
               key={i}

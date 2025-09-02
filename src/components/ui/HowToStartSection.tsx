@@ -46,7 +46,15 @@ export default function HowToStartSection() {
   };
 
   return (
-    <section className="w-full bg-[#0a0a0a] py-16 sm:py-20 md:py-24 lg:py-32">
+    <section className="relative w-full bg-[#0a0a0a] pb-16 sm:pb-20 md:pb-24 lg:pb-32">
+      <Image
+        src="/images/telegram-icon.png"
+        alt="telegram"
+        width={400}
+        height={800}
+        className="absolute -top-16 right-0 w-[200px] h-auto animate-float"
+      />
+
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[32px] sm:text-[40px] md:text-[48px] font-medium uppercase text-white leading-tight">

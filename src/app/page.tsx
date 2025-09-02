@@ -1,7 +1,5 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import Button from '@/components/ui/Button';
 import Footer from '../components/ui/Footer';
 import FinalCTA from '../components/ui/FinalCTA';
 import QualityAssessment from '../components/ui/QualityAssessment';
@@ -14,7 +12,6 @@ import BenefitsSection from '../components/ui/BenefitsSection';
 import ProfitForm from '../components/ui/ProfitForm';
 import WhyTrustCall from '../components/ui/WhyTrustCall';
 import HowToStartSection from '../components/ui/HowToStartSection';
-import Header from '../components/ui/Header';
 import HeroSection from '../components/ui/HeroSection';
 
 interface PricingPlan {

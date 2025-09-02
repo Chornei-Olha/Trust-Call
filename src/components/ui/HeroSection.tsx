@@ -62,7 +62,7 @@ export default function HeroSection() {
               <Button
                 variant="secondary"
                 size="lg"
-                className="text-[16px] sm:text-[20px] font-medium px-6 sm:px-8 py-2"
+                className="animate-pulse-scale text-[16px] sm:text-[20px] font-medium px-6 sm:px-8 py-2"
               >
                 Отримати консультацію
               </Button>
@@ -103,51 +103,44 @@ export default function HeroSection() {
       </div>
 
       {/* Логотипы партнёров */}
-      <div className="relative bg-white z-10 mx-auto px-4 sm:px-6 lg:px-8 py-5 mt-5">
-        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 opacity-80">
-          {/* лого */}
-          <Image
-            src="/images/partner.svg"
-            alt="Trust-call platform"
-            width={266}
-            height={266}
-            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
-          />
-          <Image
-            src="/images/partner2.svg"
-            alt="Trust-call platform"
-            width={266}
-            height={266}
-            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
-          />
-          <Image
-            src="/images/partner3.svg"
-            alt="Trust-call platform"
-            width={266}
-            height={266}
-            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
-          />
-          <Image
-            src="/images/partner4.svg"
-            alt="Trust-call platform"
-            width={266}
-            height={266}
-            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
-          />
-          <Image
-            src="/images/partner5.svg"
-            alt="Trust-call platform"
-            width={266}
-            height={266}
-            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
-          />
-          <Image
-            src="/images/partner6.svg"
-            alt="Trust-call platform"
-            width={266}
-            height={266}
-            className="w-full max-w-[100px] sm:max-w-[166px] h-auto mx-auto"
-          />
+      <div className="relative bg-white z-10 mx-auto px-4 sm:px-6 lg:px-8 py-5 mt-5 overflow-hidden">
+        <div className="animate-marquee flex items-center gap-12 sm:gap-16 md:gap-20 whitespace-nowrap">
+          {[
+            '/images/partner.svg',
+            '/images/partner2.svg',
+            '/images/partner3.svg',
+            '/images/partner4.svg',
+            '/images/partner5.svg',
+            '/images/partner6.svg',
+          ].map((src, idx) => (
+            <Image
+              key={idx}
+              src={src}
+              alt={`partner-${idx}`}
+              width={200}
+              height={200}
+              className="w-full max-w-[100px] sm:max-w-[166px] h-auto"
+            />
+          ))}
+
+          {/* дублируем второй раз для бесконечного эффекта */}
+          {[
+            '/images/partner.svg',
+            '/images/partner2.svg',
+            '/images/partner3.svg',
+            '/images/partner4.svg',
+            '/images/partner5.svg',
+            '/images/partner6.svg',
+          ].map((src, idx) => (
+            <Image
+              key={`dup-${idx}`}
+              src={src}
+              alt={`partner-dup-${idx}`}
+              width={200}
+              height={200}
+              className="w-full max-w-[100px] sm:max-w-[166px] h-auto"
+            />
+          ))}
         </div>
       </div>
     </section>

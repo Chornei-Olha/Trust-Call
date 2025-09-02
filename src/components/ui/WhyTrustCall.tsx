@@ -1,7 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+
+const GAP = 100; // расстояние между карточками в финальной раскладке (px)
 
 const features = [
   {
@@ -51,19 +54,64 @@ const features = [
 ];
 
 export default function WhyTrustCall() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [cardHeights, setCardHeights] = useState<number[]>([]);
+  const [vh, setVh] = useState<number>(0);
+
+  // Прогресс скролла по секции: 0 — начало, 1 — конец
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  // Измеряем высоты карточек после монтирования/ресайза
+  useLayoutEffect(() => {
+    const measure = () => {
+      const hs = cardRefs.current.map((el) =>
+        el ? Math.ceil(el.getBoundingClientRect().height) : 0
+      );
+      setCardHeights(hs);
+    };
+    measure();
+
+    // пересчитываем при ресайзе
+    const ro = new ResizeObserver(measure);
+    cardRefs.current.forEach((el) => el && ro.observe(el));
+    return () => ro.disconnect();
+  }, []);
+
+  // сохраняем высоту вьюпорта (для расчёта общей высоты области прокрутки)
+  useEffect(() => {
+    const upd = () => setVh(window.innerHeight || 0);
+    upd();
+    window.addEventListener('resize', upd);
+    return () => window.removeEventListener('resize', upd);
+  }, []);
+
+  // финальные смещения по оси Y для каждой карточки (чтобы стали одна под другой)
+  const targetY = useMemo(() => {
+    const arr: number[] = [];
+    let acc = 0;
+    for (let i = 0; i < features.length; i++) {
+      arr.push(acc * 1.3);
+      const h = cardHeights[i] || 0;
+      acc += h + GAP;
+    }
+    return arr; // [0, h0+GAP, h0+h1+2*GAP, ...]
+  }, [cardHeights]);
+
+  // общая высота "стопки" в разложенном виде + небольшой запас прокрутки
+  const stackHeight = useMemo(() => {
+    if (!cardHeights.length) return 2000; // запас до измерения
+    const total = targetY[targetY.length - 1] + (cardHeights.at(-1) || 0);
+    // добавим половину вьюпорта, чтобы было куда доскроллить
+    return total + Math.max(0, Math.round(vh * 0.15));
+  }, [cardHeights, targetY, vh]);
+
   return (
-    <section className="w-full bg-black py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-visible">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="absolute -left-[100px]">
-          {' '}
-          <Image
-            src="/images/telegram-icon.svg"
-            alt="decoration"
-            width={300}
-            height={300}
-            className="inline-block mx-4 w-[100px] sm:w-[200px] md:w-[300px] h-auto"
-          />
-        </div>
+    <section ref={sectionRef} className="w-full bg-black pt-16 sm:pt-20 md:pt-24 lg:pt-32 relative">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Заголовок */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <h2 className="text-[40px] sm:text-[50px] md:text-[64px] font-normal uppercase leading-tight mb-4">
@@ -82,58 +130,87 @@ export default function WhyTrustCall() {
           </p>
         </div>
 
-        {/* Features */}
-        <div className="space-y-16 sm:space-y-20 md:space-y-24">
-          {features.map((f, i) => (
-            <div key={f.id} className="relative z-10">
-              {/* Декоративная пешка */}
+        {/* Зона анимации: сначала стопка, потом раскладка */}
+        <div className="relative" style={{ height: stackHeight }}>
+          {features.map((f, i) => {
+            // Для плавности можно добавить лёгкую задержку для каждой карты
+            // через диапазоны преобразования прогресса.
+            // Например, карта i начнёт сильнее двигаться чуть позже:
+            const start = 0 + i * 0.06; // чем больше i, тем позже
+            const end = Math.min(1, 0.6 + i * 0.06);
+
+            const y = useTransform(
+              scrollYProgress,
+              [0, start, end, 1],
+              [0, 0, targetY[i] || 0, targetY[i] || 0]
+            );
+
+            const scale = useTransform(
+              scrollYProgress,
+              [0, start, end],
+              [1 - i * 0.03, 1 - i * 0.01, 1] // слегка «расплющены» в стопке → 1
+            );
+
+            const shadowOpacity = 0.25 - i * 0.05;
+
+            return (
               <motion.div
-                initial={{ opacity: 0, x: f.align === 'left' ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.8, delay: i * 0.2 }}
-                className={`absolute top-1/2 -translate-y-1/2 hidden md:block ${
-                  f.align === 'left' ? '-left-16' : '-right-16'
-                }`}
+                key={f.id}
+                style={{ y, scale, zIndex: features.length - i }}
+                className="absolute top-0 left-0 right-0 mx-auto max-w-5xl will-change-transform"
               >
-                <Image src={f.deco} alt="deco" width={204} height={204} className="opacity-80" />
-              </motion.div>
+                {/* Карточка */}
+                <div
+                  ref={(el) => (cardRefs.current[i] = el)}
+                  className="relative bg-[#0000004c] border border-white/40 rounded-[32px] sm:rounded-[40px] md:rounded-[48px] p-6 sm:p-8 md:p-12"
+                  style={{
+                    boxShadow: `0 8px 24px rgba(81,203,238,${Math.max(0, shadowOpacity)})`,
+                    backdropFilter: 'blur(2px)',
+                  }}
+                >
+                  {/* Декоративная пешка */}
+                  <div
+                    className={`absolute top-1/2 -translate-y-1/2 hidden md:block ${
+                      f.align === 'left' ? '-left-16' : '-right-16'
+                    } opacity-80`}
+                    aria-hidden
+                  >
+                    <Image src={f.deco} alt="" width={204} height={204} />
+                  </div>
 
-              {/* Карточка */}
-              <div className="bg-[#0000004c] border border-white/40 rounded-[32px] sm:rounded-[40px] md:rounded-[48px] p-6 sm:p-8 md:p-12 shadow-[0_0_8px_2px_#51CBEE]">
-                <h4 className="mb-5"> {f.title}</h4>
+                  <h4 className="mb-5">{f.title}</h4>
 
-                <div className="absolute top-4 right-4 w-[20%] h-auto z-0">
-                  <Image
-                    src="/images/blackBg.png"
-                    alt="icon"
-                    width={1009}
-                    height={766}
-                    className="max-w-[80px] sm:max-w-[150px] lg:max-w-[240px] w-[auto] h-[auto] object-contain"
-                  />
-                </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                  {/* Картинка */}
-                  <div>
+                  {/* Фоновая иконка справа сверху */}
+                  <div className="absolute top-4 right-4 w-[20%] h-auto z-0">
                     <Image
-                      src={f.image}
-                      alt="feature image"
-                      width={552}
-                      height={322}
-                      className="w-full h-auto rounded-lg"
+                      src="/images/blackBg.png"
+                      alt="icon"
+                      width={1009}
+                      height={766}
+                      className="max-w-[80px] sm:max-w-[150px] lg:max-w-[240px] w-auto h-auto object-contain"
                     />
                   </div>
 
-                  {/* Текст */}
-                  <div className={`${f.align === 'right' ? 'lg:order-1' : ''}`}>
-                    <p className="text-[15px] sm:text-[17px] text-white/50 leading-relaxed relative z-10">
-                      {f.text}
-                    </p>
+                  <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <div>
+                      <Image
+                        src={f.image}
+                        alt="feature image"
+                        width={552}
+                        height={322}
+                        className="w-full h-auto rounded-lg"
+                      />
+                    </div>
+                    <div className={`${f.align === 'right' ? 'lg:order-1' : ''}`}>
+                      <p className="text-[15px] sm:text-[17px] text-white/50 leading-relaxed">
+                        {f.text}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

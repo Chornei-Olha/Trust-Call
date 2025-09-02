@@ -57,7 +57,7 @@ export default function FinalCTA() {
                       ЗБІЛЬШУЮ СВІЙ ПРИБУТОК ВЖЕ СЬОГОДНІ !
                     </h4>
                     {/* Наклонная плашка */}
-                    <div className="bg-[#1663d4] rounded-lg px-6 sm:px-8 py-4 sm:py-6 inline-block transform -rotate-6">
+                    <div className="swing bg-[#1663d4] rounded-lg px-6 sm:px-8 py-4 sm:py-6 inline-block transform -rotate-6">
                       <span className="text-[24px] sm:text-[32px] md:text-[42px] font-medium uppercase text-white">
                         Знижка 10%
                       </span>
@@ -139,7 +139,7 @@ export default function FinalCTA() {
                   <Button
                     variant="brand"
                     size="sm"
-                    className="text-[8px] font-bold uppercase tracking-wider px-3 py-3"
+                    className="animate-pulse-scale text-[8px] font-bold uppercase tracking-wider px-3 py-3"
                   >
                     замовити консультацію
                   </Button>

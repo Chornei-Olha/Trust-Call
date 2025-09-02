@@ -74,7 +74,7 @@ const ProfitForm = () => {
             <Button
               variant="brand"
               size="sm"
-              className="text-[8px] font-bold uppercase tracking-wider px-3 py-3"
+              className="animate-pulse-scale text-[8px] font-bold uppercase tracking-wider px-3 py-3"
             >
               замовити консультацію
             </Button>
