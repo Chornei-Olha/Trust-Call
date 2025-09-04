@@ -10,7 +10,7 @@ interface CaseStudiesSectionProps {
 export default function CaseStudiesSection({ caseStudies }: CaseStudiesSectionProps) {
   return (
     <section className="container mx-auto py-5">
-      <h2 className="text-[30px] sm:text-[35px] md:text-[45px] lg:text-[55px] text-white font-medium text-center mb-16">
+      <h2 className="text-[30px] sm:text-[35px] md:text-[45px] lg:text-[55px] text-white font-medium text-center mb-16 ">
         НАШІ КЕЙСИ
       </h2>
 

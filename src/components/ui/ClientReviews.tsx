@@ -41,7 +41,7 @@ const ClientReviews: React.FC<ClientReviewsProps> = ({ testimonials }) => {
                 <div className="relative w-full rounded-[34px] overflow-hidden">
                   {/* Синяя плашка с leadCount */}
                   <div className="absolute top-4 right-4 z-10 rotate-[3deg]">
-                    <div className="bg-[#0067ff] rounded-md px-3 py-2">
+                    <div className="swing bg-[#0067ff] rounded-md px-3 py-2">
                       <span className="text-[10px] font-semibold text-white">
                         {testimonial.leadCount}
                       </span>
