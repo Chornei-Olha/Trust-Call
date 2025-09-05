@@ -8,7 +8,7 @@ export default function Header() {
     <header className="bg-black/40 backdrop-blur-[5px] z-[9999] w-full px-4 sm:px-6 lg:px-8 py-2 sm:py-4 fixed">
       <div className="max-w-[1440px] mx-auto flex justify-between items-center">
         {/* Логотип / название */}
-        <div className="text-[20px] sm:text-[24px] md:text-[30px] font-medium text-white uppercase tracking-wider">
+        <div className="text-[20px] sm:text-[24px] md:text-[30px] font-medium font-unbounded text-white uppercase tracking-wider">
           TRUST-CALL
         </div>
 
@@ -17,7 +17,7 @@ export default function Header() {
           <Button
             variant="brand"
             size="sm"
-            className="text-[8px] font-bold uppercase tracking-wider px-3 py-3"
+            className="text-[9px] font-bold font-unbounded uppercase tracking-wider px-3 py-3"
           >
             отримати консультацію
           </Button>

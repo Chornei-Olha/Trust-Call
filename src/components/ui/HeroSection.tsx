@@ -36,24 +36,19 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <h1 className="text-[50px] sm:text-[80px] md:text-[130px] uppercase leading-tight font-bold text-center">
+        <h1 className="text-[50px] sm:text-[80px] md:text-[130px] lg:text-[239px]  leading-[286.57px] tracking-[-14.33px] font-semibold font-inter text-center">
+          {' '}
           Trust-call
         </h1>
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           {/* Левая часть */}
-          <div className="lg:col-span-4 space-y-6 sm:space-y-8 md:space-y-12 text-[32px] sm:text-[40px] md:text-[50px] font-medium">
-            <span className="text-white">Аутсорсинговий </span>
-            <span className="text-[#005eff]">
-              кол-центр
-              <br />
-              TRUST-CALL{' '}
-            </span>
-            <span className="text-white">
-              для товарного
-              <br />
-              бізнесу
-            </span>
-            <p className="text-[18px] sm:text-[24px] md:text-[30px] font-light leading-relaxed text-white max-w-4xl">
+          <div className="lg:col-span-4 space-y-6 sm:space-y-8 md:space-y-12 font-unbounded">
+            <p className="text-white  text-[32px] sm:text-[40px] md:text-[50px] font-medium  max-w-5xl uppercase">
+              Аутсорсинговий
+              <span className="text-[#005eff]"> кол-центр TRUST-CALL </span>
+              для товарного бізнесу
+            </p>
+            <p className="text-[18px] sm:text-[24px] md:text-[30px] font-light leading-relaxed text-white max-w-5xl">
               Тестовий період перед підключенням – ми обробимо
               <br />
               ваші перші 50 лідів <span className="font-medium">АБСОЛЮТНО БЕЗКОШТОВНО</span>
@@ -73,8 +68,8 @@ export default function HeroSection() {
                       key={n}
                       src={`/images/img_ellipse_${n}_54x54.png`}
                       alt={`client-${n}`}
-                      width={200}
-                      height={200}
+                      width={500}
+                      height={500}
                       className="w-[40px] sm:w-[54px] h-[auto] rounded-full border-2 border-white"
                     />
                   ))}
@@ -89,14 +84,10 @@ export default function HeroSection() {
               <Image
                 src="/images/img_object1_png.png"
                 alt="Trust-call platform"
-                width={266}
-                height={266}
+                width={566}
+                height={566}
                 className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto"
               />
-              {/* Декоративные элементы */}
-              <div className="absolute -top-4 -right-4 w-[62px] h-[62px] bg-[#0000000c] rounded-lg shadow-lg border border-white/20"></div>
-              <div className="absolute top-8 -left-4 w-[62px] h-[62px] bg-[#0000000c] rounded-lg shadow-lg border border-white/20"></div>
-              <div className="absolute -bottom-4 right-8 w-[62px] h-[62px] bg-[#0000000c] rounded-lg shadow-lg border border-white/20"></div>
             </div>
           </div>
         </div>
