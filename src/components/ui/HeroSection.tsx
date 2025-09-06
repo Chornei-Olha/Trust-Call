@@ -57,7 +57,7 @@ export default function HeroSection() {
               <Button
                 variant="secondary"
                 size="lg"
-                className="animate-pulse-scale text-[16px] sm:text-[20px] font-medium px-6 sm:px-8 py-2 mt-2"
+                className="animate-pulse-scale text-[16px] sm:text-[20px] font-medium px-6 sm:px-8 py-2 mt-5 sm:mt-2"
               >
                 Отримати консультацію
               </Button>
@@ -85,21 +85,21 @@ export default function HeroSection() {
               alt="Trust-call platform"
               width={566}
               height={566}
-              className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto top-0 right-0 absolute"
+              className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto top-[350px] sm:top-0 right-0 absolute"
             />
             <Image
               src="/images/line.svg"
               alt="Trust-call platform"
               width={566}
               height={566}
-              className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto -top-[100px] right-[20%] absolute opacity-5"
+              className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto -top-[100px] right-[20%] absolute opacity-5 hidden sm:block"
             />
             <Image
               src="/images/blackBg.png"
               alt="Trust-call platform"
               width={566}
               height={566}
-              className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto top-[50%] right-0 absolute opacity-70"
+              className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto top-[60%] sm:top-[50%] right-0 absolute opacity-70 -z-10 sm:z-0"
             />
           </div>
         </div>

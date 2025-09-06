@@ -71,7 +71,7 @@ const ProfitForm = () => {
             </div>
 
             {/* Button */}
-            <div className="hidden lg:flex flex-col items-center -gap-16">
+            <div className="flex flex-col items-center -gap-16">
               <Button
                 variant="brand"
                 size="sm"

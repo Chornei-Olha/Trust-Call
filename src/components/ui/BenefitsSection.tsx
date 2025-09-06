@@ -52,7 +52,7 @@ const BenefitsSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Заголовок */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-[32px] sm:text-[40px] md:text-[55px] font-medium font-unbounded uppercase text-white leading-tight mb-8">
+          <h2 className="text-[30px] sm:text-[40px] md:text-[55px] font-medium font-unbounded uppercase text-white leading-tight mb-8">
             <span className="text-white">Яку </span>
             <span className="text-[#1663d3]">вигоду ви отримаєте</span>
             <span className="text-white">
@@ -76,7 +76,7 @@ const BenefitsSection = () => {
                     alt="icon"
                     width={80}
                     height={80}
-                    className="absolute top-4 right-4 w-[60px] h-[60px]"
+                    className="absolute top-4 right-4 w-[40px] sm:w-[60px] h-[40px] sm:h-[60px]"
                   />
                 )}
 
@@ -111,8 +111,10 @@ const BenefitsSection = () => {
             className="absolute -top-32 -right-32 w-[300px] h-auto z-0"
           />
           <div
-            className="relative rounded-[24px] p-6 sm:p-8 md:p-12 bg-cover bg-center h-[400px] "
-            style={{ backgroundImage: "url('/images/bgStarlink.png')" }}
+            className="relative rounded-[24px] p-6 sm:p-8 md:p-12 bg-cover  h-[500px] sm:h-[400px] bg-no-repeat bg-bottom"
+            style={{
+              backgroundImage: "url('/images/bgStarlink.png')",
+            }}
           >
             {/* Фоновые картинки */}
 

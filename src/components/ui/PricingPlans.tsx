@@ -73,7 +73,7 @@ const PricingPlans: React.FC = () => {
     <section id="pricing" className="w-full bg-black py-14 sm:py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 sm:mb-32">
-          <h2 className="text-[40px] sm:text-[48px] md:text-[55px] font-medium font-unbounded uppercase text-white leading-tight">
+          <h2 className="text-[30px] sm:text-[48px] md:text-[55px] font-medium font-unbounded uppercase text-white leading-tight">
             ТАРИФНІ ПЛАНИ
           </h2>
         </div>
@@ -134,7 +134,7 @@ const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
   return (
     <div
       ref={ref}
-      className="relative rounded-[40px] bg-white border border-white/10 p-8 flex flex-col h-full transition-transform"
+      className="relative rounded-[40px] bg-white border border-white/10 mt-20 p-8 flex flex-col h-full transition-transform"
     >
       {/* Процент выбора */}
       {plan.percent ? (

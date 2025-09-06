@@ -52,7 +52,7 @@ export default function HowToStartSection() {
         alt="telegram"
         width={400}
         height={800}
-        className="absolute -top-16 right-0 w-[200px] h-auto animate-float"
+        className="absolute -top-16 right-0 w-[120px] sm:w-[200px] h-auto animate-float"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

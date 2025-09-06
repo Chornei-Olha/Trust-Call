@@ -65,7 +65,7 @@ const ClientReviews: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-[40px] sm:text-[48px] md:text-[55px] font-semibold font-unbounded uppercase text-[#222222] leading-tight">
+          <h2 className="text-[30px] sm:text-[48px] md:text-[55px] font-semibold font-unbounded uppercase text-[#222222] leading-tight">
             ВІДГУКИ КЛІЄНТІВ
           </h2>
         </div>
@@ -134,7 +134,7 @@ const ClientReviews: React.FC = () => {
                 </div>
 
                 {/* Social */}
-                <div className="bg-[#d9d9d9] rounded-md px-3 py-2 flex items-center gap-2">
+                <div className="bg-[#d9d9d9] rounded-md px-3 py-2 flex items-center gap-2 mb-5">
                   <Image
                     src="/images/img_photoroom_png_webp.png"
                     alt="social"
@@ -158,21 +158,21 @@ const ClientReviews: React.FC = () => {
               alt="money"
               width={160}
               height={158}
-              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left-5 sm:left-0 top-[20px]"
+              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left-12 sm:left-0 top-[20px]"
             />
             <Image
               src="/images/img_dollar_64.png"
               alt="money"
               width={160}
               height={158}
-              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left-5 sm:left-0 top-[30px] rotate-6"
+              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left-12 sm:left-0 top-[30px] rotate-6"
             />
             <Image
               src="/images/img_dollar_64.png"
               alt="money"
               width={160}
               height={158}
-              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left-5 sm:left-0 top-[40px] rotate-12"
+              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left- sm:left-0 top-[40px] rotate-12"
             />
             <div className="flex-1">
               <h3 className="text-[18px] sm:text-[28px] md:text-[34px] font-bold font-unbounded uppercase text-white leading-tight px-3 sm:px-[100px]">

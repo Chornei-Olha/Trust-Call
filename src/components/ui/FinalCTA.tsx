@@ -28,8 +28,8 @@ export default function FinalCTA() {
           <div className="relative z-10 p-6 sm:p-8 md:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Левая часть */}
-              <div className="space-y-6">
-                <div className="flex justify-between items-center font-inter px-32">
+              <div className="space-y-3 sm:space-y-6">
+                <div className="flex justify-between items-center font-inter px-8 sm:px-32">
                   <span className="text-[20px] sm:text-[25px] font-semibold text-[#404040]">
                     Ви
                   </span>
@@ -118,7 +118,7 @@ export default function FinalCTA() {
                     <input
                       type="tel"
                       placeholder="(99) 999-99-99"
-                      className="flex-1 px-5 py-5 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] sm:text-[16px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
+                      className="flex-1 px-3 sm:px-5 py-3 sm:py-5 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] sm:text-[16px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
                     />
                   </div>
                 </div>
@@ -135,7 +135,7 @@ export default function FinalCTA() {
                     ))}
                   </div>
                 </div>
-                <div className="hidden lg:flex flex-col items-center -gap-16">
+                <div className="flex flex-col items-center -gap-16">
                   <Button
                     variant="brand"
                     size="sm"

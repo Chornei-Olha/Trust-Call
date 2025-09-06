@@ -22,13 +22,13 @@ const QualityAssessment = () => {
       audio: '/audio/audio3.mp3',
     },
     {
-      title: '"Акумуляторна лампочка"',
+      title: 'Акумуляторна лампочка',
       amount: '1058 грн',
       duration: '2:50',
       audio: '/audio/audio4.mp3',
     },
     {
-      title: '"Акумуляторна лампочка"',
+      title: 'TV-Shop товари',
       amount: '1058 грн',
       duration: '2:50',
       audio: '/audio/audio5.mp3',

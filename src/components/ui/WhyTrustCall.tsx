@@ -121,7 +121,7 @@ export default function WhyTrustCall() {
         alt="telegram"
         width={400}
         height={800}
-        className="absolute top-16 left-0 w-[300px] blur-sm h-auto animate-float"
+        className="absolute top-16 left-0 w-[100px] sm:w-[300px] h-auto animate-float"
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Заголовок */}
@@ -137,7 +137,7 @@ export default function WhyTrustCall() {
             />
             <span className="text-[#005eff]">trust-call</span>
           </h2>
-          <p className="text-[24px] sm:text-[28px] md:text-[32px] font-light font-unbounded text-white">
+          <p className="text-[20px] sm:text-[28px] md:text-[32px] font-light font-unbounded text-white">
             Твій найкращий помічник для товарного бізнесу
           </p>
         </div>
@@ -201,7 +201,7 @@ export default function WhyTrustCall() {
                       alt="icon"
                       width={1009}
                       height={766}
-                      className="max-w-[80px] sm:max-w-[150px] lg:max-w-[200px] w-auto h-auto object-contain"
+                      className="hidden sm:block max-w-[80px] sm:max-w-[150px] lg:max-w-[200px] w-auto h-auto object-contain"
                     />
                   </div>
 
