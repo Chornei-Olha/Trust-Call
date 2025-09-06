@@ -46,7 +46,7 @@ export default function HowToStartSection() {
   };
 
   return (
-    <section className="relative w-full bg-[#000000] py-16 sm:py-20 md:py-24 lg:py-32">
+    <section className="relative w-full bg-[#000000] py-14 sm:py-16 md:py-20 lg:py-24">
       <Image
         src="/images/telegram-icon.png"
         alt="telegram"
@@ -73,7 +73,7 @@ export default function HowToStartSection() {
                 <span className="text-[16px] font-medium text-white/60">
                   ({step.id < 10 ? `0${step.id}` : step.id})
                 </span>
-                <h3 className="text-[18px] sm:text-[20px] font-bold text-white flex-1 text-center">
+                <h3 className="text-[20px] sm:text-[24px] font-bold text-white flex-1 text-center">
                   {step.title}
                 </h3>
                 <div className="w-[46px] h-[46px] flex items-center justify-center text-white text-2xl font-bold bg-gray-800 rounded-full">
@@ -83,7 +83,7 @@ export default function HowToStartSection() {
 
               {activeStep === step.id && (
                 <div className="mt-6 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 lg:gap-8 items-start">
-                  <p className="text-[14px] font-bold text-white/50 leading-relaxed">
+                  <p className="text-[18px] font-bold text-white/50 leading-relaxed">
                     {step.description}
                   </p>
                   <div className="relative w-full h-[150px] lg:h-[180px]">

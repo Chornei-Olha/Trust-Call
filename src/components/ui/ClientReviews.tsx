@@ -61,7 +61,7 @@ const ClientReviews: React.FC = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   return (
-    <section className="w-full bg-white py-16 sm:py-20 md:py-24 lg:py-32">
+    <section id="reviews" className="w-full bg-white py-14 sm:py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="text-center mb-12 sm:mb-16">
@@ -88,9 +88,9 @@ const ClientReviews: React.FC = () => {
                 {/* Video */}
                 <div className="relative w-full rounded-[34px] overflow-hidden">
                   {/* Синяя плашка с leadCount */}
-                  <div className="absolute top-4 right-4 z-10 rotate-[3deg]">
+                  <div className="absolute top-4 right-4 z-10 rotate-[5deg]">
                     <div className="swing bg-[#0067ff] rounded-md px-3 py-2">
-                      <span className="text-[10px] font-semibold text-white">
+                      <span className="text-[10px] font-semibold font-inter text-white">
                         {testimonial.leadCount}
                       </span>
                     </div>

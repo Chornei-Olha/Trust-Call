@@ -36,7 +36,7 @@ const QualityAssessment = () => {
   ];
 
   return (
-    <section className="w-full bg-black py-16 sm:py-20 md:py-24 lg:pb-[300px] relative overflow-hidden">
+    <section className="w-full bg-black py-14 sm:py-16 md:py-20 lg:pb-[300px] relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Заголовок */}
         <div className="text-center mb-12 sm:mb-16">

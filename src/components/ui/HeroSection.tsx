@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <section
       className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/img__0x0.png')" }}
+      style={{ backgroundImage: "url('/images/img__0x0.png')", backgroundSize: '100% auto' }}
     >
       {/* Верхняя строка */}
       <Header />
@@ -36,14 +36,14 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <h1 className="text-[50px] sm:text-[80px] md:text-[130px] lg:text-[239px]  leading-[286.57px] tracking-[-14.33px] font-semibold font-inter text-center">
+        <h1 className="text-[70px] sm:text-[80px] md:text-[130px] lg:text-[239px] font-semibold font-inter text-center">
           {' '}
           Trust-call
         </h1>
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-5 items-center relative">
           {/* Левая часть */}
           <div className="lg:col-span-4 space-y-6 sm:space-y-8 md:space-y-12 font-unbounded">
-            <p className="text-white  text-[32px] sm:text-[40px] md:text-[50px] font-medium  max-w-5xl uppercase">
+            <p className="text-white  text-[25px] sm:text-[40px] md:text-[50px] font-medium  max-w-5xl uppercase">
               Аутсорсинговий
               <span className="text-[#005eff]"> кол-центр TRUST-CALL </span>
               для товарного бізнесу
@@ -53,11 +53,11 @@ export default function HeroSection() {
               <br />
               ваші перші 50 лідів <span className="font-medium">АБСОЛЮТНО БЕЗКОШТОВНО</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
+            <div className="flex flex-col sm:flex-row gap-8 items-start sm:items-center pb-[100px] sm:pb-[200px]">
               <Button
                 variant="secondary"
                 size="lg"
-                className="animate-pulse-scale text-[16px] sm:text-[20px] font-medium px-6 sm:px-8 py-2"
+                className="animate-pulse-scale text-[16px] sm:text-[20px] font-medium px-6 sm:px-8 py-2 mt-2"
               >
                 Отримати консультацію
               </Button>
@@ -79,16 +79,28 @@ export default function HeroSection() {
           </div>
 
           {/* Правая часть */}
-          <div className="lg:col-span-4 relative">
-            <div className="relative">
-              <Image
-                src="/images/img_object1_png.png"
-                alt="Trust-call platform"
-                width={566}
-                height={566}
-                className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto"
-              />
-            </div>
+          <div className="lg:col-span-4">
+            <Image
+              src="/images/crop.svg"
+              alt="Trust-call platform"
+              width={566}
+              height={566}
+              className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto top-0 right-0 absolute"
+            />
+            <Image
+              src="/images/line.svg"
+              alt="Trust-call platform"
+              width={566}
+              height={566}
+              className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto -top-[100px] right-[20%] absolute opacity-5"
+            />
+            <Image
+              src="/images/blackBg.png"
+              alt="Trust-call platform"
+              width={566}
+              height={566}
+              className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto top-[50%] right-0 absolute opacity-70"
+            />
           </div>
         </div>
       </div>

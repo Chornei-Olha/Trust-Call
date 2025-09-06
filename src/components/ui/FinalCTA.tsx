@@ -12,7 +12,7 @@ export default function FinalCTA() {
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
 
   return (
-    <section className="w-full bg-white pt-16 sm:pt-20 md:pt-24 lg:pt-32">
+    <section className="w-full bg-white pt-14 sm:pt-16 md:pt-20 lg:pt-24">
       <div className="contaimer mx-auto px-4 sm:px-6 lg:px-8">
         {/* Подложка с фоном и скруглёнными верхними углами */}
         <div className="relative overflow-hidden rounded-t-[32px] bg-[#d9ecff]">

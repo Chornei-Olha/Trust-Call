@@ -44,7 +44,8 @@ const benefits = [
 const BenefitsSection = () => {
   return (
     <section
-      className="w-full relative bg-black py-16 sm:py-20 md:py-24 lg:py-32 bg-top bg-no-repeat bg-cover"
+      id="benefits"
+      className="w-full relative bg-black py-14 sm:py-16 md:py-20 lg:py-24 bg-top bg-no-repeat bg-cover"
       style={{ backgroundImage: "url('/images/top-bg.png')", backgroundSize: '100% auto' }}
     >
       {' '}
@@ -93,34 +94,53 @@ const BenefitsSection = () => {
         </div>
 
         {/* Autonomous Work Section */}
-        <div
-          className="rounded-[24px] p-6 sm:p-8 md:p-12 bg-cover bg-center h-[400px] "
-          style={{ backgroundImage: "url('/images/bgStarlink.png')" }}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-2 space-y-6">
-              <h3 className="text-[28px] sm:text-[32px] md:text-[37px] font-bold font-inter text-black leading-tight">
-                <span className="text-black">TRUST-CALL</span>
-                <span className="text-black font-normal">
-                  {' '}
-                  ПРАЦЮЄ
-                  <br />
-                  АВТОНОМНО!
-                </span>
-              </h3>
-              <p className="text-[15px] font-regular font-inter text-black/50 leading-relaxed">
-                Завдяки наявному генератору та Starlink, ми працюємо у повному автономному режимі, і
-                навіть під час повного блек-ауту зможемо обробляти ліди. Ми на зв'язку 24/7 та
-                завжди виконуємо свої обов'язки у повному обсязі!
-              </p>
-            </div>
-            <div className="lg:col-span-2 flex flex-col sm:flex-row gap-4 items-center justify-end">
-              <div className="bg-[#1663d3] rounded-[22px] px-6 py-3">
-                <span className="text-[17px] font-semibold font-inter text-white">Starlink</span>
+        <div className="relative">
+          {' '}
+          <Image
+            src="/images/telegram-left.svg"
+            alt="telegram"
+            width={400}
+            height={800}
+            className="absolute -bottom-32 -left-32 w-[300px] h-auto z-0"
+          />
+          <Image
+            src="/images/telegram-right.svg"
+            alt="telegram"
+            width={400}
+            height={800}
+            className="absolute -top-32 -right-32 w-[300px] h-auto z-0"
+          />
+          <div
+            className="relative rounded-[24px] p-6 sm:p-8 md:p-12 bg-cover bg-center h-[400px] "
+            style={{ backgroundImage: "url('/images/bgStarlink.png')" }}
+          >
+            {/* Фоновые картинки */}
+
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center relative">
+              <div className="lg:col-span-2 space-y-6">
+                <h3 className="text-[28px] sm:text-[32px] md:text-[37px] font-bold font-inter text-black leading-tight">
+                  <span className="text-black">TRUST-CALL</span>
+                  <span className="text-black font-normal">
+                    {' '}
+                    ПРАЦЮЄ
+                    <br />
+                    АВТОНОМНО!
+                  </span>
+                </h3>
+                <p className="text-[15px] font-regular font-inter text-black/50 leading-relaxed">
+                  Завдяки наявному ератору та Starlink, ми працюємо у повному автономному режимі, і
+                  навіть під час повного блек-ауту зможемо обробляти ліди. Ми на зв'язку 24/7 та
+                  завжди виконуємо свої обов'язки у повному обсязі!
+                </p>
               </div>
-              <div className="bg-white rounded-[22px] px-4 py-2 text-black font-semibold">+</div>
-              <div className="bg-[#1663d3] rounded-[22px] px-6 py-3">
-                <span className="text-[17px] font-semibold font-inter text-white">Генератор</span>
+              <div className="lg:col-span-2 flex flex-col sm:flex-row gap-4 items-center justify-end">
+                <div className="bg-[#1663d3] rounded-[22px] px-6 py-3">
+                  <span className="text-[17px] font-semibold font-inter text-white">Starlink</span>
+                </div>
+                <div className="bg-white rounded-[22px] px-4 py-2 text-black font-semibold">+</div>
+                <div className="bg-[#1663d3] rounded-[22px] px-6 py-3">
+                  <span className="text-[17px] font-semibold font-inter text-white">Генератор</span>
+                </div>
               </div>
             </div>
           </div>

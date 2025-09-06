@@ -45,7 +45,7 @@ const reviews: Review[] = [
 
 export default function ReviewsCarousel() {
   return (
-    <section className="w-full bg-white pb-16 sm:pb-20 md:pb-24">
+    <section className="w-full bg-white pb-14 sm:pb-16 md:pb-20 lg:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Swiper
           modules={[Navigation, Pagination]}

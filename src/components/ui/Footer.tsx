@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black py-16 sm:py-20 md:py-24 lg:py-32">
+    <footer className="w-full bg-black py-14 sm:py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Social Icons */}
         <div className="flex justify-center gap-4 mb-12">
@@ -108,12 +108,6 @@ export default function Footer() {
               className="text-[16px] sm:text-[18px] md:text-[20px] font-bold text-white hover:text-[#1663d3] transition-colors"
             >
               Переваги співпраці
-            </a>
-            <a
-              href="#partners"
-              className="text-[16px] sm:text-[18px] md:text-[20px] font-bold text-white hover:text-[#1663d3] transition-colors"
-            >
-              Партнери
             </a>
             <a
               href="#pricing"

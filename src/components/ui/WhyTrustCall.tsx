@@ -111,7 +111,18 @@ export default function WhyTrustCall() {
   }, [cardHeights, targetY, vh]);
 
   return (
-    <section ref={sectionRef} className="w-full bg-black pt-16 sm:pt-20 md:pt-24 lg:pt-32 relative">
+    <section
+      id="about"
+      ref={sectionRef}
+      className="w-full bg-black pt-14 sm:pt-16 md:pt-20 lg:pt-24 relative"
+    >
+      <Image
+        src="/images/telegram-right.svg"
+        alt="telegram"
+        width={400}
+        height={800}
+        className="absolute top-16 left-0 w-[300px] blur-sm h-auto animate-float"
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Заголовок */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">

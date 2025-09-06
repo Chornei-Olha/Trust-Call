@@ -70,7 +70,7 @@ const pricingPlans: PricingPlan[] = [
 
 const PricingPlans: React.FC = () => {
   return (
-    <section className="w-full bg-black py-16 sm:py-20 md:py-24 lg:py-32">
+    <section id="pricing" className="w-full bg-black py-14 sm:py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 sm:mb-32">
           <h2 className="text-[40px] sm:text-[48px] md:text-[55px] font-medium font-unbounded uppercase text-white leading-tight">

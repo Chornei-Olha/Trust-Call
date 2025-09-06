@@ -19,7 +19,7 @@ const ProfitForm = () => {
   };
 
   return (
-    <section className="w-full bg-black py-16 sm:py-20 md:py-24 lg:py-32">
+    <section className="w-full bg-black py-14 sm:py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <h3 className="text-[18px] sm:text-[20px] md:text-[25px] lg:text-[30px] font-unbounded font-semibold uppercase text-white mb-6">
