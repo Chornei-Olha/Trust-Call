@@ -40,7 +40,7 @@ const QualityAssessment = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Заголовок */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-[40px] sm:text-[48px] md:text-[55px] uppercase font-semibold font-unbounded text-white leading-tight">
+          <h2 className="text-[30px] sm:text-[48px] md:text-[55px] uppercase font-semibold font-unbounded text-white leading-tight">
             ОЦІНІТЬ ЯКІСТЬ РОБОТИ
             <br />
             НАШИХ ОПЕРАТОРІВ

@@ -158,24 +158,24 @@ const ClientReviews: React.FC = () => {
               alt="money"
               width={160}
               height={158}
-              className="w-[80px] sm:w-[120px] md:w-[160px] h-auto absolute left-0 top-[20px]"
+              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left-5 sm:left-0 top-[20px]"
             />
             <Image
               src="/images/img_dollar_64.png"
               alt="money"
               width={160}
               height={158}
-              className="w-[80px] sm:w-[120px] md:w-[160px] h-auto absolute left-0 top-[30px] rotate-6"
+              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left-5 sm:left-0 top-[30px] rotate-6"
             />
             <Image
               src="/images/img_dollar_64.png"
               alt="money"
               width={160}
               height={158}
-              className="w-[80px] sm:w-[120px] md:w-[160px] h-auto absolute left-0 top-[40px] rotate-12"
+              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left-5 sm:left-0 top-[40px] rotate-12"
             />
             <div className="flex-1">
-              <h3 className="text-[24px] sm:text-[28px] md:text-[34px] font-bold font-unbounded uppercase text-white leading-tight px-[100px]">
+              <h3 className="text-[18px] sm:text-[28px] md:text-[34px] font-bold font-unbounded uppercase text-white leading-tight px-3 sm:px-[100px]">
                 <span>Підвищимо апрув </span>
                 <span className="text-[#1663d3]">до 95%</span>
                 <span> та помножимо Ваш прибуток </span>
@@ -187,21 +187,21 @@ const ClientReviews: React.FC = () => {
               alt="money"
               width={126}
               height={142}
-              className="w-[60px] sm:w-[90px] md:w-[126px] h-auto absolute right-0 top-[20px]"
+              className="w-[70px] sm:w-[90px] md:w-[126px] h-auto absolute -right-5 sm:right-0 top-[20px]"
             />
             <Image
               src="/images/img_dollar_61.png"
               alt="money"
               width={126}
               height={142}
-              className="w-[60px] sm:w-[90px] md:w-[126px] h-auto absolute right-0 top-[20px] rotate-6"
+              className="w-[70px] sm:w-[90px] md:w-[126px] h-auto absolute -right-5 sm:right-0 top-[20px] rotate-6"
             />
             <Image
               src="/images/img_dollar_61.png"
               alt="money"
               width={126}
               height={142}
-              className="w-[60px] sm:w-[90px] md:w-[126px] h-auto absolute right-0 top-[20px] rotate-12"
+              className="w-[70px] sm:w-[90px] md:w-[126px] h-auto absolute -right-5 sm:right-0 top-[20px] rotate-12"
             />
           </div>
         </div>
