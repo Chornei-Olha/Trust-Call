@@ -43,7 +43,11 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="w-full bg-black py-16 sm:py-20 md:py-24 lg:py-32">
+    <section
+      className="w-full relative bg-black py-16 sm:py-20 md:py-24 lg:py-32 bg-top bg-no-repeat bg-cover"
+      style={{ backgroundImage: "url('/images/top-bg.png')", backgroundSize: '100% auto' }}
+    >
+      {' '}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Заголовок */}
         <div className="text-center mb-12 sm:mb-16">

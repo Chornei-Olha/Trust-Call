@@ -77,7 +77,7 @@ const QualityAssessment = () => {
                 <p className="text-[13px] font-semibold text-[#4040407f]">на суму {item.amount}</p>
                 {/* Audio */}
                 <audio controls className="w-full">
-                  <source src="/audio/sample.mp3" type="audio/mpeg" />
+                  <source src={item.audio} type="audio/mpeg" />
                   Ваш браузер не підтримує аудіо.
                 </audio>
               </div>

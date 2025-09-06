@@ -46,7 +46,7 @@ export default function HowToStartSection() {
   };
 
   return (
-    <section className="relative w-full bg-[#0a0a0a] pb-16 sm:pb-20 md:pb-24 lg:pb-32">
+    <section className="relative w-full bg-[#000000] py-16 sm:py-20 md:py-24 lg:py-32">
       <Image
         src="/images/telegram-icon.png"
         alt="telegram"
@@ -55,9 +55,9 @@ export default function HowToStartSection() {
         className="absolute -top-16 right-0 w-[200px] h-auto animate-float"
       />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-[32px] sm:text-[40px] md:text-[48px] font-medium uppercase text-white leading-tight">
+          <h2 className="text-[30px] sm:text-[35px] md:text-[45px] lg:text-[55px] font-semibold font-unbounded uppercase text-white leading-tight">
             Як почати співпрацювати
             <br />з нами?
           </h2>
@@ -83,10 +83,10 @@ export default function HowToStartSection() {
 
               {activeStep === step.id && (
                 <div className="mt-6 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 lg:gap-8 items-start">
-                  <p className="text-[14px] font-medium text-white/50 leading-relaxed">
+                  <p className="text-[14px] font-bold text-white/50 leading-relaxed">
                     {step.description}
                   </p>
-                  <div className="relative w-full h-[180px] lg:h-[242px]">
+                  <div className="relative w-full h-[150px] lg:h-[180px]">
                     <Image
                       src={step.imgSrc}
                       alt={step.title}

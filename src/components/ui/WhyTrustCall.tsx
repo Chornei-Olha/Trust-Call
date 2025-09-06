@@ -25,7 +25,7 @@ const features = [
     id: 2,
     title: (
       <>
-        <span className="text-white">Збільшимо допродажі</span>
+        <span className="text-[#1663d3]">Збільшимо допродажі</span>
         <br />
         <span className="text-white">та середній чек</span>
       </>
@@ -41,6 +41,7 @@ const features = [
     title: (
       <>
         <span className="text-white">Звільняємо ваш час від рутини та </span>
+        <br />
         <span className="text-[#1663d3]">гарантовано примножуємо ваш прибуток</span>
       </>
     ),
@@ -111,10 +112,10 @@ export default function WhyTrustCall() {
 
   return (
     <section ref={sectionRef} className="w-full bg-black pt-16 sm:pt-20 md:pt-24 lg:pt-32 relative">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Заголовок */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
-          <h2 className="text-[40px] sm:text-[50px] md:text-[64px] font-normal uppercase leading-tight mb-4">
+          <h2 className="text-[40px] sm:text-[50px] md:text-[64px] font-semibold font-unbounded uppercase leading-tight mb-4">
             <span className="text-white">Чому саме </span>
             <Image
               src="/images/img_image.svg"
@@ -125,7 +126,7 @@ export default function WhyTrustCall() {
             />
             <span className="text-[#005eff]">trust-call</span>
           </h2>
-          <p className="text-[24px] sm:text-[28px] md:text-[32px] font-light text-white">
+          <p className="text-[24px] sm:text-[28px] md:text-[32px] font-light font-unbounded text-white">
             Твій найкращий помічник для товарного бізнесу
           </p>
         </div>
@@ -171,14 +172,16 @@ export default function WhyTrustCall() {
                   {/* Декоративная пешка */}
                   <div
                     className={`absolute top-1/2 -translate-y-1/2 hidden md:block ${
-                      f.align === 'left' ? '-left-16' : '-right-16'
+                      f.align === 'left' ? '-left-32' : '-right-32'
                     } opacity-80`}
                     aria-hidden
                   >
                     <Image src={f.deco} alt="" width={204} height={204} />
                   </div>
 
-                  <h4 className="mb-5">{f.title}</h4>
+                  <h4 className="mb-5 font-unbounded font-medium text-[20px] uppercase">
+                    {f.title}
+                  </h4>
 
                   {/* Фоновая иконка справа сверху */}
                   <div className="absolute top-4 right-4 w-[20%] h-auto z-0">
@@ -187,7 +190,7 @@ export default function WhyTrustCall() {
                       alt="icon"
                       width={1009}
                       height={766}
-                      className="max-w-[80px] sm:max-w-[150px] lg:max-w-[240px] w-auto h-auto object-contain"
+                      className="max-w-[80px] sm:max-w-[150px] lg:max-w-[200px] w-auto h-auto object-contain"
                     />
                   </div>
 
@@ -196,13 +199,13 @@ export default function WhyTrustCall() {
                       <Image
                         src={f.image}
                         alt="feature image"
-                        width={552}
-                        height={322}
+                        width={852}
+                        height={722}
                         className="w-full h-auto rounded-lg"
                       />
                     </div>
                     <div className={`${f.align === 'right' ? 'lg:order-1' : ''}`}>
-                      <p className="text-[15px] sm:text-[17px] text-white/50 leading-relaxed">
+                      <p className="text-[15px] sm:text-[17px] font-inter font-regular text-white/50 leading-relaxed">
                         {f.text}
                       </p>
                     </div>
