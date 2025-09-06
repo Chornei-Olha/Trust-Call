@@ -8,6 +8,7 @@ export interface CaseStudy {
   id: string;
   title: string;
   category: string;
+  image: string;
   beforeStats: {
     approval: string;
     upsell: string;
@@ -36,7 +37,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
 
   return (
     <div
-      className="relative w-full h-[700px] [perspective:1000px] cursor-pointer" // 👈 фиксированная высота
+      className="relative w-full h-[850px] [perspective:1000px] cursor-pointer" // 👈 фиксированная высота
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <div
@@ -49,11 +50,11 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
           <div className="bg-gradient-to-b from-[#1663d3] to-[#f0f0f0] rounded-[10px] overflow-hidden h-full">
             <div className="p-6 space-y-4">
               <Image
-                src="/images/img_rectangle_2.png"
+                src={study.image}
                 alt={study.title}
-                width={378}
-                height={164}
-                className="w-full h-[120px] sm:h-[140px] md:h-[164px] object-cover rounded-lg"
+                width={778}
+                height={564}
+                className="w-full h-[150px] sm:h-[200px] md:h-[300px] object-cover rounded-lg"
               />
 
               <div className="text-center space-y-2">

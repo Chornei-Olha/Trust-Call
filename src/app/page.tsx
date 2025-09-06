@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Footer from '../components/ui/Footer';
 import FinalCTA from '../components/ui/FinalCTA';
 import QualityAssessment from '../components/ui/QualityAssessment';
-import TestimonialsCarousel from '../components/ui/TestimonialsCarousel';
 import ClientReviews from '../components/ui/ClientReviews';
 import CaseStudiesSection from '../components/ui/CaseStudiesSection';
 import { CaseStudy } from '../components/ui/CaseStudyCard';
@@ -13,6 +12,7 @@ import ProfitForm from '../components/ui/ProfitForm';
 import WhyTrustCall from '../components/ui/WhyTrustCall';
 import HowToStartSection from '../components/ui/HowToStartSection';
 import HeroSection from '../components/ui/HeroSection';
+import ReviewsCarousel from '../components/ui/ReviewsCarousel';
 
 interface PricingPlan {
   id: string;
@@ -28,26 +28,17 @@ interface Testimonial {
   id: string;
   name: string;
   niche: string;
-  content: string;
   leadCount: string;
   rating: number;
   avatar: string;
   socialHandle: string;
+  videoUrl: string;
 }
-interface TeamMember {
-  id: string;
-  name: string;
-  role: string;
-  content: string;
-  leadCount: string;
-  rating: number;
-  avatar: string;
-  socialHandle: string;
-}
+
 const TrustCallLandingPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('cooperation');
   const [formData, setFormData] = useState({
-    name: 'Олексій',
+    name: 'Імя',
     phone: '(99) 999-99-99',
     contactMethod: 'call',
   });
@@ -109,6 +100,8 @@ const TrustCallLandingPage: React.FC = () => {
       id: 'bedding',
       title: 'Продаж постільної білизни',
       category: '(Інтернет-магазин)',
+      image: '/images/case1.png',
+
       beforeStats: {
         approval: '72%',
         upsell: '65%',
@@ -131,6 +124,8 @@ const TrustCallLandingPage: React.FC = () => {
       id: 'appliances',
       title: 'Дрібна побутова техніка',
       category: '(Інтернет-магазин)',
+      image: '/images/case2.png',
+
       beforeStats: {
         approval: '23%',
         upsell: '12%',
@@ -153,6 +148,8 @@ const TrustCallLandingPage: React.FC = () => {
       id: 'clothing',
       title: 'Жіночий одяг',
       category: '(Інтернет-магазин)',
+      image: '/images/case3.png',
+
       beforeStats: {
         approval: '43%',
         upsell: '38%',
@@ -172,52 +169,7 @@ const TrustCallLandingPage: React.FC = () => {
       },
     },
   ];
-  const testimonials: Testimonial[] = [
-    {
-      id: '1',
-      name: 'Максим Ліповський',
-      niche: 'Власник інтернет магазину',
-      content:
-        'Наша компанія займається вирощуванням та продажем саджанців, і для нас важливо було знайти команду, яка допоможе якісно працювати з клієнтами. Оператори завжди швидко реагують на звернення, надають детальні консультації та допомагають нашим покупцям зробити правильний вибір. Це співробітництво значно підвищило довіру клієнтів і дало змогу нам розвиватися швидше.',
-      leadCount: 'К-сть лідів 300',
-      rating: 5,
-      avatar: '/images/img_img_58x58.png',
-      socialHandle: '@Maxx_0001',
-    },
-    {
-      id: '2',
-      name: 'Анатолій Соколов',
-      niche: 'Продаж товарів через односторінкові сайти',
-      content:
-        'Ми працюємо в сегменті жіночого одягу, і для нас особливо важливо, щоб клієнт завжди отримував вчасну та якісну консультацію. Команда операторів чудово справляється із цим завданням — вони ввічливі, уважні й завжди готові допомогти підібрати потрібний варіант. Завдяки такій співпраці нам вдалося підвищити довіру покупців і збільшити кількість повторних замовлень',
-      leadCount: 'К-сть лідів 150+',
-      rating: 5,
-      avatar: '/images/img_img_2.png',
-      socialHandle: '@a_ssokolov',
-    },
-    {
-      id: '3',
-      name: 'Вадим Попазов',
-      niche: 'Продажі електроніки через односторінкові сайти',
-      content:
-        'Наша компанія спеціалізується на продажі господарських товарів, і якісний сервіс для клієнтів завжди був у пріоритеті. Завдяки співпраці з Trust-call ми отримали можливість швидко обробляти замовлення та відповідати на всі запитання покупців. Це суттєво зменшило кількість відмов і допомогло збільшити обсяги продажів.',
-      leadCount: 'К-сть лідів 500+',
-      rating: 5,
-      avatar: '/images/img_img_3.png',
-      socialHandle: '@popazov_vadim',
-    },
-    {
-      id: '4',
-      name: 'Вадим Попазов',
-      niche: 'Продажі електроніки через односторінкові сайти',
-      content:
-        'Наша компанія спеціалізується на продажі господарських товарів, і якісний сервіс для клієнтів завжди був у пріоритеті. Завдяки співпраці з Trust-call ми отримали можливість швидко обробляти замовлення та відповідати на всі запитання покупців. Це суттєво зменшило кількість відмов і допомогло збільшити обсяги продажів.',
-      leadCount: 'К-сть лідів 500+',
-      rating: 5,
-      avatar: '/images/img_img_3.png',
-      socialHandle: '@popazov_vadim',
-    },
-  ];
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
@@ -238,8 +190,8 @@ const TrustCallLandingPage: React.FC = () => {
       <BenefitsSection />
       <PricingPlans />
       <CaseStudiesSection caseStudies={caseStudies} />
-      <ClientReviews testimonials={testimonials} />
-      <TestimonialsCarousel testimonials={testimonials} />
+      <ClientReviews />
+      <ReviewsCarousel />
       <QualityAssessment />
       <FinalCTA />
       <Footer />

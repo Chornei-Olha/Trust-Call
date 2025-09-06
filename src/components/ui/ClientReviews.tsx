@@ -1,23 +1,71 @@
-// components/ClientReviews.tsx
+import { useState } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Testimonial } from './TestimonialsCarousel';
 
-interface ClientReviewsProps {
+type Testimonial = {
+  id: string;
+  name: string;
+  niche: string;
+  leadCount: string;
+  rating: number;
+  avatar: string;
+  socialHandle: string;
+  videoUrl: string;
+};
+
+type ClientReviewsProps = {
   testimonials: Testimonial[];
-}
+};
 
-const ClientReviews: React.FC<ClientReviewsProps> = ({ testimonials }) => {
+const testimonials: Testimonial[] = [
+  {
+    id: '1',
+    name: 'Максим Ліповський',
+    niche: 'Власник інтернет магазину',
+    leadCount: '150+ ЛІДІВ НА ДЕНЬ',
+    rating: 5,
+    avatar: '/images/img_img_58x58.png',
+    socialHandle: '@Maxx_0001',
+    videoUrl:
+      'https://www.youtube.com/watch?v=DtJC0eTs-2s&ab_channel=%D0%A2%D0%B2%D1%96%D0%B9TRUST-CALLcentr',
+  },
+  {
+    id: '2',
+    name: 'Анатолій Соколов',
+    niche: 'Продаж товарів через односторінкові сайти',
+    leadCount: '250+ ЛІДІВ НА ДЕНЬ',
+    rating: 5,
+    avatar: '/images/img_img_2.png',
+    socialHandle: '@a_ssokolov',
+    videoUrl:
+      'yhttps://outube.com/watch?v=G04KTMge2JY&embeds_referring_euri=https%3A%2F%2Ftrust-call.com%2F&source_ve_path=OTY3MTQ',
+  },
+  {
+    id: '3',
+    name: 'Вадим Попазов',
+    niche: 'Продажі електроніки через односторінкові сайти',
+    leadCount: '450+ ЛІДІВ НА ДЕНЬ',
+    rating: 5,
+    avatar: '/images/img_img_3.png',
+    socialHandle: '@popazov_vadim',
+    videoUrl:
+      'https://www.youtube.com/watch?v=EjVq4sLoKYY&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2%D0%90%D0%B1%D1%80%D0%B0%D0%BC%D0%BE%D0%B2%D0%B8%D1%87',
+  },
+];
+
+const ClientReviews: React.FC = () => {
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
   return (
     <section className="w-full bg-white py-16 sm:py-20 md:py-24 lg:py-32">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-[40px] sm:text-[48px] md:text-[55px] font-medium text-[#222222] leading-tight">
+          <h2 className="text-[40px] sm:text-[48px] md:text-[55px] font-semibold font-unbounded uppercase text-[#222222] leading-tight">
             ВІДГУКИ КЛІЄНТІВ
           </h2>
         </div>
@@ -55,7 +103,11 @@ const ClientReviews: React.FC<ClientReviewsProps> = ({ testimonials }) => {
                     height={280}
                     className="w-full aspect-video object-cover rounded-[34px]"
                   />
-                  <button className="absolute inset-0 flex items-center justify-center">
+                  <button
+                    className="absolute inset-0 flex items-center justify-center"
+                    onClick={() => setActiveVideo(testimonial.videoUrl)} // 👈 відкриваємо відео
+                  >
+                    {' '}
                     <Image
                       src="/images/img_button_dialog.svg"
                       alt="play"
@@ -71,8 +123,8 @@ const ClientReviews: React.FC<ClientReviewsProps> = ({ testimonials }) => {
                   <Image
                     src={testimonial.avatar}
                     alt={testimonial.name}
-                    width={58}
-                    height={58}
+                    width={158}
+                    height={158}
                     className="w-[58px] h-[58px] rounded-full"
                   />
                   <div>
@@ -99,25 +151,34 @@ const ClientReviews: React.FC<ClientReviewsProps> = ({ testimonials }) => {
           ))}
         </Swiper>
         {/* Profit Increase Banner */}
-        <div className="bg-[#292929] rounded-[72px] p-6 sm:p-8 md:p-12 text-center">
+        <div className="bg-[#292929] rounded-[72px] p-6 sm:p-8 md:p-12 text-center mt-16 relative">
           <div className="flex items-center justify-center gap-4 sm:gap-8">
             <Image
               src="/images/img_dollar_64.png"
               alt="money"
               width={160}
               height={158}
-              className="w-[80px] sm:w-[120px] md:w-[160px] h-auto"
+              className="w-[80px] sm:w-[120px] md:w-[160px] h-auto absolute left-0 top-[20px]"
+            />
+            <Image
+              src="/images/img_dollar_64.png"
+              alt="money"
+              width={160}
+              height={158}
+              className="w-[80px] sm:w-[120px] md:w-[160px] h-auto absolute left-0 top-[30px] rotate-6"
+            />
+            <Image
+              src="/images/img_dollar_64.png"
+              alt="money"
+              width={160}
+              height={158}
+              className="w-[80px] sm:w-[120px] md:w-[160px] h-auto absolute left-0 top-[40px] rotate-12"
             />
             <div className="flex-1">
-              <h3 className="text-[24px] sm:text-[28px] md:text-[34px] font-bold uppercase text-white leading-tight">
+              <h3 className="text-[24px] sm:text-[28px] md:text-[34px] font-bold font-unbounded uppercase text-white leading-tight px-[100px]">
                 <span>Підвищимо апрув </span>
                 <span className="text-[#1663d3]">до 95%</span>
-                <span>
-                  {' '}
-                  та помножимо
-                  <br />
-                  Ваш прибуток{' '}
-                </span>
+                <span> та помножимо Ваш прибуток </span>
                 <span className="text-[#1663d3]">мінімум у 2 рази!</span>
               </h3>
             </div>
@@ -126,7 +187,21 @@ const ClientReviews: React.FC<ClientReviewsProps> = ({ testimonials }) => {
               alt="money"
               width={126}
               height={142}
-              className="w-[60px] sm:w-[90px] md:w-[126px] h-auto"
+              className="w-[60px] sm:w-[90px] md:w-[126px] h-auto absolute right-0 top-[20px]"
+            />
+            <Image
+              src="/images/img_dollar_61.png"
+              alt="money"
+              width={126}
+              height={142}
+              className="w-[60px] sm:w-[90px] md:w-[126px] h-auto absolute right-0 top-[20px] rotate-6"
+            />
+            <Image
+              src="/images/img_dollar_61.png"
+              alt="money"
+              width={126}
+              height={142}
+              className="w-[60px] sm:w-[90px] md:w-[126px] h-auto absolute right-0 top-[20px] rotate-12"
             />
           </div>
         </div>

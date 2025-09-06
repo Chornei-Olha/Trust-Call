@@ -17,7 +17,7 @@ export default function Header() {
           <Button
             variant="brand"
             size="sm"
-            className="text-[9px] font-bold font-unbounded uppercase tracking-wider px-3 py-3"
+            className="text-[9px] font-medium font-unbounded uppercase tracking-wider px-3 py-3"
           >
             отримати консультацію
           </Button>
