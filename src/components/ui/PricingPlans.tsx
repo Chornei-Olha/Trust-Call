@@ -71,9 +71,9 @@ const pricingPlans: PricingPlan[] = [
 const PricingPlans: React.FC = () => {
   return (
     <section className="w-full bg-black py-16 sm:py-20 md:py-24 lg:py-32">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-[40px] sm:text-[48px] md:text-[55px] font-medium uppercase text-white leading-tight">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16 sm:mb-32">
+          <h2 className="text-[40px] sm:text-[48px] md:text-[55px] font-medium font-unbounded uppercase text-white leading-tight">
             ТАРИФНІ ПЛАНИ
           </h2>
         </div>
@@ -161,9 +161,13 @@ const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
                 strokeLinecap="round"
               />
             </svg>
-            <div className="absolute text-center">
-              <p className="text-2xl font-bold text-black">{progress}%</p>
-              <p className="text-xs text-gray-500">обирають наші клієнти</p>
+            <div className="absolute text-center font-inter">
+              <p className="text-2xl font-bold text-[20px] sm:text-[30px] text-black">
+                {progress}%
+              </p>
+              <p className="text-xs font-regular text-[11px] text-gray-500">
+                обирають наші клієнти
+              </p>
             </div>
           </div>
         </div>
@@ -187,8 +191,8 @@ const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
               key={i}
               src={`/images/img_ellipse_${i}.png`}
               alt="client"
-              width={36}
-              height={36}
+              width={336}
+              height={336}
               className="w-10 h-10 rounded-full border-2 border-white"
             />
           ))}
@@ -196,8 +200,8 @@ const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
 
         {/* Название */}
         <div className="text-center mb-6">
-          <p className="text-[18px] font-bold text-white/40">пакет</p>
-          <h3 className="text-[48px] sm:text-[56px] md:text-[64px] font-medium text-white leading-none">
+          <p className="text-[18px] sm:text-[20px] font-bold font-inter text-white/40">пакет</p>
+          <h3 className="text-[48px] sm:text-[56px] md:text-[64px] lg:text-[69px] font-regular font-inter text-white leading-none">
             {plan.name}
           </h3>
         </div>
@@ -208,7 +212,7 @@ const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
         <Button
           variant="default"
           size="lg"
-          className="bg-black text-white hover:bg-gray-800 text-[16px] font-medium shadow-lg w-full rounded-xl py-6"
+          className="bg-black text-white hover:bg-gray-800 text-[16px] font-medium font-inter shadow-lg w-full rounded-xl py-6"
         >
           {plan.buttonText}
         </Button>
@@ -225,7 +229,9 @@ const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
               height={28}
               className="flex-shrink-0 mt-1"
             />
-            <p className="text-[15px] sm:text-[17px] text-black/50 leading-relaxed">{feature}</p>
+            <p className="text-[15px] sm:text-[17px] font-regular font-inter text-black/50 leading-relaxed">
+              {feature}
+            </p>
           </div>
         ))}
       </div>

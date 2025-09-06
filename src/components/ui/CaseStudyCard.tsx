@@ -36,7 +36,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
 
   return (
     <div
-      className="relative w-full h-[600px] [perspective:1000px] cursor-pointer" // 👈 фиксированная высота
+      className="relative w-full h-[700px] [perspective:1000px] cursor-pointer" // 👈 фиксированная высота
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <div

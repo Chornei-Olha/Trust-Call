@@ -19,9 +19,9 @@ const ProfitForm = () => {
   };
 
   return (
-    <div className="bg-black rounded-[24px] p-6 sm:p-8 md:p-12">
+    <div className="container rounded-[24px] p-6 sm:p-8 md:p-12">
       <div className="text-center mb-8">
-        <h3 className="text-[24px] sm:text-[30px] font-bold uppercase text-white mb-6">
+        <h3 className="text-[24px] font-inter font-bold uppercase text-white mb-6">
           ЗБІЛЬШУЮ СВІЙ ПРИБУТОК ВЖЕ СЬОГОДНІ !
         </h3>
       </div>
@@ -31,7 +31,7 @@ const ProfitForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-6 items-end">
           {/* Name */}
           <div>
-            <label className="block text-[16px] font-semibold text-white mb-2">
+            <label className="block text-[16px] sm:text-[25px] font-semibold font-inter text-white mb-2">
               Як до вас звертатися?
             </label>
             <input
@@ -45,7 +45,7 @@ const ProfitForm = () => {
 
           {/* Phone */}
           <div>
-            <label className="block text-[16px] font-semibold text-white mb-2">
+            <label className="block text-[16px] sm:text-[25px] font-semibold font-inter text-white mb-2">
               Ваш номер телефону
             </label>
             <div className="relative">

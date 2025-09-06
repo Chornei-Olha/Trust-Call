@@ -3,25 +3,51 @@ import Image from 'next/image';
 
 const QualityAssessment = () => {
   const items = [
-    { title: 'Дрібна побутова техніка', amount: '698 грн', duration: '2:28' },
-    { title: 'Продаж комплектів постільної білизни', amount: '1017 грн', duration: '5:32' },
-    { title: 'TV -Shop товари', amount: '1198 грн', duration: '2:38' },
-    { title: '"Акумуляторна лампочка"', amount: '1058 грн', duration: '2:50' },
+    {
+      title: 'Дрібна побутова техніка',
+      amount: '698 грн',
+      duration: '2:28',
+      audio: '/audio/audio1.mp3',
+    },
+    {
+      title: 'Продаж комплектів постільної білизни',
+      amount: '1017 грн',
+      duration: '5:32',
+      audio: '/audio/audio2.mp3',
+    },
+    {
+      title: 'TV-Shop товари',
+      amount: '1198 грн',
+      duration: '2:38',
+      audio: '/audio/audio3.mp3',
+    },
+    {
+      title: '"Акумуляторна лампочка"',
+      amount: '1058 грн',
+      duration: '2:50',
+      audio: '/audio/audio4.mp3',
+    },
+    {
+      title: '"Акумуляторна лампочка"',
+      amount: '1058 грн',
+      duration: '2:50',
+      audio: '/audio/audio5.mp3',
+    },
   ];
 
   return (
     <section className="w-full bg-black py-16 sm:py-20 md:py-24 lg:pb-[300px] relative overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Заголовок */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-[40px] sm:text-[48px] md:text-[55px] font-semibold text-white leading-tight">
+          <h2 className="text-[40px] sm:text-[48px] md:text-[55px] uppercase font-semibold font-unbounded text-white leading-tight">
             ОЦІНІТЬ ЯКІСТЬ РОБОТИ
             <br />
             НАШИХ ОПЕРАТОРІВ
           </h2>
           <div className="mt-8">
             <div className="bg-[#0066fb] rounded-[30px] px-6 py-3 inline-block shadow-2xl transform rotate-[5deg]">
-              <p className="text-[17px] font-bold uppercase text-white">
+              <p className="text-[17px] font-bold font-unbounded uppercase text-white">
                 Це той випадок, коли краще 1 раз почути
               </p>
             </div>
@@ -29,7 +55,7 @@ const QualityAssessment = () => {
         </div>
 
         {/* Карточки */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
           {items.map((item, idx) => (
             <div
               key={idx}
@@ -37,10 +63,10 @@ const QualityAssessment = () => {
             >
               <div className="w-[90px] h-[90px] sm:w-[118px] sm:h-[118px] bg-gray-200 rounded-lg flex-shrink-0 overflow-hidden">
                 <Image
-                  src="/images/sample-product.jpg"
+                  src="/images/audio.png"
                   alt={item.title}
-                  width={118}
-                  height={118}
+                  width={500}
+                  height={500}
                   className="object-cover w-full h-full"
                 />
               </div>
