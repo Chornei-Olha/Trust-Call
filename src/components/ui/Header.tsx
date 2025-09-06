@@ -45,6 +45,12 @@ export default function Header() {
             variant="brand"
             size="sm"
             className="text-[9px] font-medium font-unbounded uppercase tracking-wider px-3 py-3"
+            onClick={() => {
+              const formEl = document.getElementById('form');
+              if (formEl) {
+                formEl.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
           >
             отримати консультацію
           </Button>
@@ -77,7 +83,13 @@ export default function Header() {
             <Button
               variant="brand"
               size="sm"
-              className="text-[11px] font-medium font-unbounded uppercase tracking-wider px-4 py-3"
+              className="text-[9px] font-medium font-unbounded uppercase tracking-wider px-3 py-3"
+              onClick={() => {
+                const formEl = document.getElementById('form');
+                if (formEl) {
+                  formEl.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
               отримати консультацію
             </Button>

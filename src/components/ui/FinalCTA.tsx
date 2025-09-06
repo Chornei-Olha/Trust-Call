@@ -12,7 +12,7 @@ export default function FinalCTA() {
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
 
   return (
-    <section className="w-full bg-white pt-14 sm:pt-16 md:pt-20 lg:pt-24">
+    <section id="form" className="w-full bg-white pt-14 sm:pt-16 md:pt-20 lg:pt-24">
       <div className="contaimer mx-auto px-4 sm:px-6 lg:px-8">
         {/* Подложка с фоном и скруглёнными верхними углами */}
         <div className="relative overflow-hidden rounded-t-[32px] bg-[#d9ecff]">
@@ -84,14 +84,14 @@ export default function FinalCTA() {
                   <input
                     type="text"
                     defaultValue="Олексій"
-                    className="w-full px-5 py-5 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] sm:text-[16px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
+                    className="w-full px-4 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] sm:text-[16px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
                   />
                 </div>
                 <div>
                   <label className="block text-[20px] sm:text-[25px] font-semibold font-inter text-[#202020] mb-3">
                     Ваш номер телефону
                   </label>
-                  <div className="flex gap-3 items-center">
+                  <div className="flex items-center">
                     <div className="flex items-center gap-2 bg-white border border-[#e1e1e1] rounded-[32px] px-4 py-3">
                       <Image
                         src={selectedCountry.flag}

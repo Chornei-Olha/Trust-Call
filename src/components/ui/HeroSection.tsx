@@ -53,7 +53,7 @@ export default function HeroSection() {
               <br />
               ваші перші 50 лідів <span className="font-medium">АБСОЛЮТНО БЕЗКОШТОВНО</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-8 items-start sm:items-center pb-[100px] sm:pb-[200px]">
+            <div className="flex flex-col sm:flex-row gap-8 items-start sm:items-center pb-[80px] sm:pb-[200px]">
               <Button
                 variant="secondary"
                 size="lg"
@@ -85,7 +85,7 @@ export default function HeroSection() {
               alt="Trust-call platform"
               width={566}
               height={566}
-              className="w-full max-w-[200px] sm:max-w-[266px] h-auto mx-auto top-[350px] sm:top-0 right-0 absolute"
+              className="w-full max-w-[170px] sm:max-w-[266px] h-auto mx-auto top-[350px] sm:top-0 right-0 absolute"
             />
             <Image
               src="/images/line.svg"

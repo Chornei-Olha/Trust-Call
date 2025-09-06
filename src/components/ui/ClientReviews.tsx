@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useEffect, useState } from 'react';
 
 type Testimonial = {
   id: string;
@@ -58,6 +58,15 @@ const testimonials: Testimonial[] = [
 ];
 
 const ClientReviews: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   return (
@@ -74,7 +83,7 @@ const ClientReviews: React.FC = () => {
           modules={[Navigation, Pagination]}
           spaceBetween={24}
           pagination={{ clickable: true }}
-          navigation
+          navigation={!isMobile}
           breakpoints={{
             0: { slidesPerView: 1 },
             640: { slidesPerView: 1.1, centeredSlides: true },
@@ -172,7 +181,7 @@ const ClientReviews: React.FC = () => {
               alt="money"
               width={160}
               height={158}
-              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left- sm:left-0 top-[40px] rotate-12"
+              className="w-[100px] sm:w-[120px] md:w-[160px] h-auto absolute -left-12 sm:left-0 top-[40px] rotate-12"
             />
             <div className="flex-1">
               <h3 className="text-[18px] sm:text-[28px] md:text-[34px] font-bold font-unbounded uppercase text-white leading-tight px-3 sm:px-[100px]">

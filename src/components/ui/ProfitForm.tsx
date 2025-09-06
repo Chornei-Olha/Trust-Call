@@ -39,7 +39,7 @@ const ProfitForm = () => {
                 type="text"
                 value={formData.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
-                className="w-full px-5 py-6 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
+                className="w-full px-4 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
                 placeholder="Олексій"
               />
             </div>
@@ -64,7 +64,7 @@ const ProfitForm = () => {
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className="w-full pl-20 pr-5 py-6 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
+                  className="w-full pl-20 pr-5 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
                   placeholder="(99) 999-99-99"
                 />
               </div>

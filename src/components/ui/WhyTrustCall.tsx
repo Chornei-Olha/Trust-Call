@@ -174,7 +174,7 @@ export default function WhyTrustCall() {
                 {/* Карточка */}
                 <div
                   ref={(el) => (cardRefs.current[i] = el)}
-                  className="relative bg-[#0000004c] border border-white/40 rounded-[32px] sm:rounded-[40px] md:rounded-[48px] p-6 sm:p-8 md:p-12"
+                  className="relative bg-[#000000] border border-white/40 rounded-[32px] sm:rounded-[40px] md:rounded-[48px] p-6 sm:p-8 md:p-12"
                   style={{
                     boxShadow: `0 8px 24px rgba(81,203,238,${Math.max(0, shadowOpacity)})`,
                     backdropFilter: 'blur(2px)',

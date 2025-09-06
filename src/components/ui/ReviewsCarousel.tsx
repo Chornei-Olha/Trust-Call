@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 interface Review {
   id: string;
@@ -44,6 +45,14 @@ const reviews: Review[] = [
 ];
 
 export default function ReviewsCarousel() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
   return (
     <section className="w-full bg-white pb-14 sm:pb-16 md:pb-20 lg:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,7 +60,7 @@ export default function ReviewsCarousel() {
           modules={[Navigation, Pagination]}
           spaceBetween={24}
           pagination={{ clickable: true }}
-          navigation
+          navigation={!isMobile}
           breakpoints={{
             0: { slidesPerView: 1 }, // 👈 мобільний — по одному
             768: { slidesPerView: 2 }, // 👈 планшет
