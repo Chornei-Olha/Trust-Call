@@ -30,8 +30,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     avatar: '/images/img_img_58x58.png',
     socialHandle: '@Maxx_0001',
-    videoUrl:
-      'https://www.youtube.com/watch?v=DtJC0eTs-2s&ab_channel=%D0%A2%D0%B2%D1%96%D0%B9TRUST-CALLcentr',
+    videoUrl: 'https://www.youtube.com/watch?v=DtJC0eTs-2s',
   },
   {
     id: '2',
@@ -41,8 +40,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     avatar: '/images/img_img_2.png',
     socialHandle: '@a_ssokolov',
-    videoUrl:
-      'yhttps://outube.com/watch?v=G04KTMge2JY&embeds_referring_euri=https%3A%2F%2Ftrust-call.com%2F&source_ve_path=OTY3MTQ',
+    videoUrl: 'https://www.youtube.com/watch?v=G04KTMge2JY',
   },
   {
     id: '3',
@@ -52,13 +50,13 @@ const testimonials: Testimonial[] = [
     rating: 5,
     avatar: '/images/img_img_3.png',
     socialHandle: '@popazov_vadim',
-    videoUrl:
-      'https://www.youtube.com/watch?v=EjVq4sLoKYY&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2%D0%90%D0%B1%D1%80%D0%B0%D0%BC%D0%BE%D0%B2%D0%B8%D1%87',
+    videoUrl: 'https://www.youtube.com/watch?v=EjVq4sLoKYY',
   },
 ];
 
 const ClientReviews: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -66,8 +64,6 @@ const ClientReviews: React.FC = () => {
     window.addEventListener('resize', check);
     return () => window.removeEventListener('resize', check);
   }, []);
-
-  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   return (
     <section id="reviews" className="w-full bg-white py-14 sm:py-16 md:py-20 lg:py-24">
@@ -159,6 +155,27 @@ const ClientReviews: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Modal Video */}
+        {activeVideo && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+            <div className="relative w-full max-w-4xl">
+              <iframe
+                src={activeVideo.replace('watch?v=', 'embed/')}
+                className="w-full aspect-video rounded-xl"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+              />
+              <button
+                onClick={() => setActiveVideo(null)}
+                className="absolute -top-8 right-0 text-white text-3xl font-bold"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Profit Increase Banner */}
         <div className="bg-[#292929] rounded-[72px] p-6 sm:p-8 md:p-12 text-center mt-16 relative">
           <div className="flex items-center justify-center gap-4 sm:gap-8">

@@ -83,7 +83,7 @@ export default function HowToStartSection() {
 
               {activeStep === step.id && (
                 <div className="mt-6 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 lg:gap-8 items-start">
-                  <p className="text-[18px] font-bold text-white/50 leading-relaxed">
+                  <p className="text-[18px] font-bold text-white/70 leading-relaxed">
                     {step.description}
                   </p>
                   <div className="relative w-full h-[150px] lg:h-[180px]">

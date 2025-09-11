@@ -216,7 +216,7 @@ export default function WhyTrustCall() {
                       />
                     </div>
                     <div className={`${f.align === 'right' ? 'lg:order-1' : ''}`}>
-                      <p className="text-[15px] sm:text-[17px] font-inter font-regular text-white/50 leading-relaxed">
+                      <p className="text-[15px] sm:text-[17px] font-inter font-regular text-white/70 leading-relaxed">
                         {f.text}
                       </p>
                     </div>

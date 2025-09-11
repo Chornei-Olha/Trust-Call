@@ -84,7 +84,7 @@ const BenefitsSection = () => {
                   <h3 className="text-[18px] sm:text-[20px] font-bold font-inter text-white whitespace-pre-line">
                     {benefit.title}
                   </h3>
-                  <p className="text-[14px] font-bold font-inter text-white/50 leading-relaxed">
+                  <p className="text-[14px] font-bold font-inter text-white/70 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
