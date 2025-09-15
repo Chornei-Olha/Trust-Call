@@ -58,6 +58,12 @@ export default function HeroSection() {
                 variant="secondary"
                 size="lg"
                 className="animate-pulse-scale text-[16px] sm:text-[20px] font-medium px-6 sm:px-8 py-2 mt-5 sm:mt-2"
+                onClick={() => {
+                  const formEl = document.getElementById('form');
+                  if (formEl) {
+                    formEl.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 Отримати консультацію
               </Button>
