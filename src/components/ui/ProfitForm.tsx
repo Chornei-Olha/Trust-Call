@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import Image from 'next/image';
+import emailjs from '@emailjs/browser';
 
 const ProfitForm = () => {
   const [formData, setFormData] = useState({
@@ -9,13 +10,32 @@ const ProfitForm = () => {
     phone: '',
   });
 
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+
+    const templateParams = {
+      name: formData.name,
+      phone: `+380 ${formData.phone}`, // фиксированный код (можно сделать селектор как в FinalCTA)
+    };
+
+    try {
+      await emailjs.send(
+        'service_v33od0d', // ID сервиса
+        'template_dfl7sos', // ID шаблона
+        templateParams, // данные формы
+        'sr_aVM5WYfgNWFCze' // public key
+      );
+
+      alert('✅ Дякуємо! Ми скоро з вами зв’яжемося.');
+      setFormData({ name: '', phone: '' });
+    } catch (err: any) {
+      console.error('FAILED...', err);
+      alert('❌ Сталася помилка. Спробуйте ще раз.');
+    }
   };
 
   return (
@@ -41,6 +61,7 @@ const ProfitForm = () => {
                 onChange={(e) => handleInputChange('name', e.target.value)}
                 className="w-full px-4 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
                 placeholder="Олексій"
+                required
               />
             </div>
 
@@ -66,6 +87,7 @@ const ProfitForm = () => {
                   onChange={(e) => handleInputChange('phone', e.target.value)}
                   className="w-full pl-20 pr-5 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
                   placeholder="(99) 999-99-99"
+                  required
                 />
               </div>
             </div>
@@ -73,6 +95,7 @@ const ProfitForm = () => {
             {/* Button */}
             <div className="flex flex-col items-center -gap-16">
               <Button
+                type="submit"
                 variant="brand"
                 size="sm"
                 className="animate-pulse-scale text-[8px] sm:text-[16px] font-medium font-inter uppercase tracking-wider px-3 py-3"
