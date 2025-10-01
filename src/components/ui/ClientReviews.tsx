@@ -65,6 +65,20 @@ const ClientReviews: React.FC = () => {
     return () => window.removeEventListener('resize', check);
   }, []);
 
+  const getEmbedUrl = (url: string) => {
+    if (url.includes('shorts/')) {
+      const videoId = url.split('shorts/')[1].split(/[?&]/)[0];
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+
+    if (url.includes('watch?v=')) {
+      const videoId = url.split('watch?v=')[1].split('&')[0];
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+
+    return url; // на случай уже embed URL
+  };
+
   return (
     <section id="reviews" className="w-full bg-white py-14 sm:py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,7 +175,7 @@ const ClientReviews: React.FC = () => {
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
             <div className="relative w-full max-w-4xl">
               <iframe
-                src={activeVideo.replace('watch?v=', 'embed/')}
+                src={getEmbedUrl(activeVideo)}
                 className="w-full aspect-video rounded-xl"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
