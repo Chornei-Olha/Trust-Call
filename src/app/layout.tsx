@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/index.css';
+import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export const viewport = {
   width: 'device-width',
@@ -21,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-NVN68TMK" />
+      <GoogleAnalytics gaId="G-1P3FEHDLW" />
+
       <body>
         {children}
         <script

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Button from '@/components/ui/Button';
@@ -30,8 +30,8 @@ const pricingPlans: PricingPlan[] = [
       'Персональний менеджер: 24/7',
       'Унікальні скрипти продажу під ваші оффери',
       'Дожим замовлення до викупу: безкоштовно',
-      'Підтверджене замовлення: 22 грн',
-      'Допродаж (Upsell, Cross-sell): 25%',
+      'Підтверджене замовлення: 18 грн',
+      'Допродаж (Upsell, Cross-sell): 20%',
     ],
     buttonText: 'Підключити послугу',
   },
@@ -39,11 +39,26 @@ const pricingPlans: PricingPlan[] = [
     id: 'company',
     name: 'Company',
     icon: '/images/vr-2.png',
-    percent: 45,
+    percent: 43,
     buttonText: 'Підключити послугу',
     isPopular: true,
     features: [
       'Кількість лідів на день: 50–100',
+      'Персональний менеджер: 24/7',
+      'Унікальні скрипти продажу під ваші оффери',
+      'Дожим замовлення до викупу: безкоштовно',
+      'Підтверджене замовлення: 19 грн',
+      'Допродаж (Upsell, Cross-sell): 21%',
+    ],
+  },
+  {
+    id: 'business',
+    name: 'Business',
+    icon: '/images/vr-3.png',
+    percent: 22,
+    buttonText: 'Підключити послугу',
+    features: [
+      'Кількість лідів на день: 100-999',
       'Персональний менеджер: 24/7',
       'Унікальні скрипти продажу під ваші оффери',
       'Дожим замовлення до викупу: безкоштовно',
@@ -52,18 +67,18 @@ const pricingPlans: PricingPlan[] = [
     ],
   },
   {
-    id: 'business',
-    name: 'Business',
+    id: 'elite',
+    name: 'Elite',
     icon: '/images/vr-3.png',
-    percent: 24,
+    percent: 4,
     buttonText: 'Підключити послугу',
     features: [
-      'Кількість лідів на день: 100+',
+      'Кількість лідів на день: 1000+',
       'Персональний менеджер: 24/7',
       'Унікальні скрипти продажу під ваші оффери',
       'Дожим замовлення до викупу: безкоштовно',
-      'Підтверджене замовлення: 18 грн',
-      'Допродаж (Upsell, Cross-sell): 22%',
+      'Підтверджене замовлення: 17 грн',
+      'Допродаж (Upsell, Cross-sell): 19%',
     ],
   },
 ];
@@ -95,10 +110,43 @@ const PricingPlans: React.FC = () => {
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {pricingPlans.map((plan) => (
-            <PricingCard key={plan.id} plan={plan} />
-          ))}
+        {/* Desktop Swiper */}
+        <div className="hidden md:block relative overflow-visible">
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={3}
+            navigation
+            pagination={{ clickable: true }}
+            modules={[Pagination, Navigation]}
+            className="pb-10"
+          >
+            {pricingPlans.map((plan) => (
+              <SwiperSlide key={plan.id}>
+                <PricingCard plan={plan} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <style jsx global>{`
+            .swiper-button-prev {
+              left: 0px; /* выносим стрелку левее карточек */
+              top: 50%;
+              transform: translateY(-50%);
+              color: blue;
+              z-index: 50;
+            }
+            .swiper-button-next {
+              right: 0px; /* выносим стрелку правее карточек */
+              top: 50%;
+              transform: translateY(-50%);
+              color: blue;
+              z-index: 50;
+            }
+            .swiper-button-prev::after,
+            .swiper-button-next::after {
+              font-size: 32px;
+            }
+          `}</style>
         </div>
       </div>
     </section>
@@ -209,13 +257,15 @@ const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
 
       {/* Кнопка */}
       <div className="py-6">
-        <Button
-          variant="default"
-          size="lg"
-          className="bg-black text-white hover:bg-gray-800 text-[16px] font-medium font-inter shadow-lg w-full rounded-xl py-6"
-        >
-          {plan.buttonText}
-        </Button>
+        <a href="#form">
+          <Button
+            variant="default"
+            size="lg"
+            className="bg-black text-white hover:bg-gray-800 text-[16px] font-medium font-inter shadow-lg w-full rounded-xl py-6"
+          >
+            {plan.buttonText}
+          </Button>
+        </a>
       </div>
 
       {/* Список фич */}
