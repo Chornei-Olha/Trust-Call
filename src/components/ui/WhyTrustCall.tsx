@@ -17,7 +17,7 @@ const features = [
     ),
     text: `Швидкість прийому заявки не більше 5 хвилин! Кожна заявка проходить весь цикл
     продзвону та додаткових методів опрацювання для отримання максимального показника апруву.`,
-    image: '/images/forCard1.jpeg',
+    image: '/images/forCard1.png',
     deco: '/images/img_pawn_left.svg',
     align: 'right',
   },
@@ -32,7 +32,7 @@ const features = [
     ),
     text: `Завдяки унікальним скриптам під кожен товар, ми маємо найкращі показники
     серед конкурентів щодо відсотка та середнього чека з допродажів товарів.`,
-    image: '/images/forCard2.jpeg',
+    image: '/images/forCard2.png',
     deco: '/images/img_pawn_left.svg',
     align: 'left',
   },
@@ -48,7 +48,7 @@ const features = [
     text: `В команді Trust-call, тільки професійні менеджери, які чудово знають свою справу!
     Витрачайте свій дорогоцінний час на оптимізацію та масштабування власного бізнесу.
     Найголовніше для нас – це довгострокові відносини з партнерами.`,
-    image: '/images/forCard3.jpeg',
+    image: '/images/forCard3.png',
     deco: '/images/img_pawn_right.svg',
     align: 'right',
   },
