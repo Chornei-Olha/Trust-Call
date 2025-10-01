@@ -24,13 +24,13 @@ type ClientReviewsProps = {
 const testimonials: Testimonial[] = [
   {
     id: '1',
-    name: 'Олександр',
+    name: 'Дмитро',
     niche: 'Власник інтернет магазину',
     leadCount: '400+ ЛІДІВ НА ДЕНЬ',
     rating: 5,
-    avatar: '/images/img_img_58x58.png',
+    avatar: '/images/img_img.png',
     socialHandle: '@TheKingOdessa',
-    videoUrl: 'https://www.youtube.com/watch?v=DtJC0eTs-2s',
+    videoUrl: 'https://www.youtube.com/shorts/3hB22QG3JS8',
   },
   {
     id: '2',
@@ -48,9 +48,9 @@ const testimonials: Testimonial[] = [
     niche: 'Продажі електроніки через односторінкові сайти',
     leadCount: '250+ ЛІДІВ НА ДЕНЬ',
     rating: 5,
-    avatar: '/images/img_img_3.png',
+    avatar: '/images/img_img_1.png',
     socialHandle: '@SergEEvna_1',
-    videoUrl: 'https://www.youtube.com/watch?v=EjVq4sLoKYY',
+    videoUrl: 'https://www.youtube.com/watch?v=6ZBjOX6kils',
   },
 ];
 
