@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,html,mdx}'],
   darkMode: 'class',
@@ -48,6 +49,16 @@ module.exports = {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
         unbounded: ['Unbounded', 'sans-serif'],
+      },
+
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+      },
+      animation: {
+        wiggle: 'wiggle 0.5s ease-in-out infinite',
       },
     },
   },

@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '../ui/Button';
-import { Menu, X } from 'lucide-react'; // иконки для бургера
+import { Menu, X } from 'lucide-react';
+import PopupForm from '@/components/ui/PopupForm'; // 👈 импортируем поп-ап
 
 const navLinks = [
   { href: '#about', label: 'Про компанію' },
@@ -16,6 +17,12 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // 👈 состояние поп-апа
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+    setIsOpen(false); // закрываем мобильное меню, если открыто
+  };
 
   return (
     <header className="bg-black/40 backdrop-blur-[5px] z-[9999] w-full px-4 sm:px-6 lg:px-8 py-2 sm:py-4 fixed">
@@ -45,12 +52,7 @@ export default function Header() {
             variant="brand"
             size="sm"
             className="text-[9px] font-medium font-unbounded uppercase tracking-wider px-3 py-3"
-            onClick={() => {
-              const formEl = document.getElementById('form');
-              if (formEl) {
-                formEl.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
+            onClick={handleOpenPopup} // 👈 открываем поп-ап
           >
             отримати консультацію
           </Button>
@@ -72,7 +74,7 @@ export default function Header() {
               <a
                 key={i}
                 href={link.href}
-                onClick={() => setIsOpen(false)} // закрывать меню при клике
+                onClick={() => setIsOpen(false)}
                 className="text-[18px] font-bold text-white hover:text-[#1663d3] transition-colors"
               >
                 {link.label}
@@ -84,18 +86,16 @@ export default function Header() {
               variant="brand"
               size="sm"
               className="text-[9px] font-medium font-unbounded uppercase tracking-wider px-3 py-3"
-              onClick={() => {
-                const formEl = document.getElementById('form');
-                if (formEl) {
-                  formEl.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
+              onClick={handleOpenPopup} // 👈 тоже открываем поп-ап
             >
               отримати консультацію
             </Button>
           </div>
         </div>
       )}
+
+      {/* 👇 сам поп-ап (рендерится поверх всего) */}
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </header>
   );
 }

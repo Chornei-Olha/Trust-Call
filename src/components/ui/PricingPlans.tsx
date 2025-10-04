@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import Button from '@/components/ui/Button';
 import { useInView } from 'react-intersection-observer';
+import PopupForm from '@/components/ui/PopupForm';
 
 interface PricingPlan {
   id: string;
@@ -30,8 +31,8 @@ const pricingPlans: PricingPlan[] = [
       'Персональний менеджер: 24/7',
       'Унікальні скрипти продажу під ваші оффери',
       'Дожим замовлення до викупу: безкоштовно',
-      'Підтверджене замовлення: 18 грн',
-      'Допродаж (Upsell, Cross-sell): 20%',
+      'Підтверджене замовлення: 20 грн',
+      'Допродаж (Upsell, Cross-sell): 22%',
     ],
     buttonText: 'Підключити послугу',
   },
@@ -62,8 +63,8 @@ const pricingPlans: PricingPlan[] = [
       'Персональний менеджер: 24/7',
       'Унікальні скрипти продажу під ваші оффери',
       'Дожим замовлення до викупу: безкоштовно',
-      'Підтверджене замовлення: 20 грн',
-      'Допродаж (Upsell, Cross-sell): 22%',
+      'Підтверджене замовлення: 18 грн',
+      'Допродаж (Upsell, Cross-sell): 20%',
     ],
   },
   {
@@ -84,6 +85,8 @@ const pricingPlans: PricingPlan[] = [
 ];
 
 const PricingPlans: React.FC = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // 👈 состояние поп-апа
+
   return (
     <section id="pricing" className="w-full bg-black py-14 sm:py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,7 +106,7 @@ const PricingPlans: React.FC = () => {
           >
             {pricingPlans.map((plan) => (
               <SwiperSlide key={plan.id}>
-                <PricingCard plan={plan} />
+                <PricingCard plan={plan} onOpenPopup={() => setIsPopupOpen(true)} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -122,7 +125,7 @@ const PricingPlans: React.FC = () => {
           >
             {pricingPlans.map((plan) => (
               <SwiperSlide key={plan.id}>
-                <PricingCard plan={plan} />
+                <PricingCard plan={plan} onOpenPopup={() => setIsPopupOpen(true)} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -149,12 +152,17 @@ const PricingPlans: React.FC = () => {
           `}</style>
         </div>
       </div>
+      {/* PopupForm */}
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </section>
   );
 };
 
 // ===== Карточка тарифа =====
-const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
+const PricingCard: React.FC<{ plan: PricingPlan; onOpenPopup: () => void }> = ({
+  plan,
+  onOpenPopup,
+}) => {
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.15 }); // 👈
   const [progress, setProgress] = useState(0);
 
@@ -257,15 +265,15 @@ const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
 
       {/* Кнопка */}
       <div className="py-6">
-        <a href="#form">
-          <Button
-            variant="default"
-            size="lg"
-            className="bg-black text-white hover:bg-gray-800 text-[16px] font-medium font-inter shadow-lg w-full rounded-xl py-6"
-          >
-            {plan.buttonText}
-          </Button>
-        </a>
+        <Button
+          variant="default"
+          size="lg"
+          className="bg-black text-white hover:bg-gray-800 text-[16px] font-medium font-inter shadow-lg w-full rounded-xl py-6"
+          onClick={onOpenPopup} // 👈 добавляем открытие поп-апа
+        >
+          {' '}
+          {plan.buttonText}{' '}
+        </Button>{' '}
       </div>
 
       {/* Список фич */}

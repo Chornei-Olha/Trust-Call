@@ -5,33 +5,38 @@ const QualityAssessment = () => {
   const items = [
     {
       title: 'Дрібна побутова техніка',
+      image: '/images/card1.webp',
       amount: '698 грн',
       duration: '2:28',
       audio: '/audio/audio1.mp3',
     },
     {
-      title: 'Продаж комплектів постільної білизни',
-      amount: '1017 грн',
-      duration: '5:32',
-      audio: '/audio/audio2.mp3',
+      title: 'TV-Shop товари',
+      image: '/images/card2.jpeg',
+      amount: '1058 грн',
+      duration: '2:50',
+      audio: '/audio/audio5.mp3',
     },
     {
       title: 'TV-Shop товари',
+      image: '/images/card3.png',
       amount: '1198 грн',
       duration: '2:38',
       audio: '/audio/audio3.mp3',
     },
     {
-      title: 'Акумуляторна лампочка',
+      title: 'Акумуляторна пила',
+      image: '/images/card4.jpg',
+      amount: '1017 грн',
+      duration: '5:32',
+      audio: '/audio/audio2.mp3',
+    },
+    {
+      title: 'Комплекти постільної білизни',
+      image: '/images/card5.webp',
       amount: '1058 грн',
       duration: '2:50',
       audio: '/audio/audio4.mp3',
-    },
-    {
-      title: 'TV-Shop товари',
-      amount: '1058 грн',
-      duration: '2:50',
-      audio: '/audio/audio5.mp3',
     },
   ];
 
@@ -63,7 +68,7 @@ const QualityAssessment = () => {
             >
               <div className="w-[90px] h-[90px] sm:w-[118px] sm:h-[118px] bg-gray-200 rounded-lg flex-shrink-0 overflow-hidden">
                 <Image
-                  src="/images/audio.png"
+                  src={item.image}
                   alt={item.title}
                   width={500}
                   height={500}

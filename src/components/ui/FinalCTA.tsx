@@ -57,7 +57,7 @@ export default function FinalCTA() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Левая часть */}
               <div className="space-y-3 sm:space-y-6">
-                <div className="flex justify-between items-center font-inter px-8 sm:px-32">
+                <div className="flex justify-between items-center font-inter px-8 sm:px-8 lg:mr-32">
                   <span className="text-[20px] sm:text-[25px] font-semibold text-[#404040]">
                     Ви
                   </span>
@@ -65,13 +65,37 @@ export default function FinalCTA() {
                     Наша команда
                   </span>
                 </div>
-                <Image
-                  src="/images/img_group_267_2_png_webp.png"
-                  alt="comparison"
-                  width={1000}
-                  height={600}
-                  className="w-full h-auto"
-                />
+                <div className="flex flex-row items-center justify-between">
+                  {' '}
+                  <Image
+                    src="/images/user.png"
+                    alt="comparison"
+                    width={1000}
+                    height={600}
+                    className="h-auto w-[60px] sm:w-[80px] lg:w-[100px]"
+                  />
+                  <Image
+                    src="/images/add.png"
+                    alt="comparison"
+                    width={1000}
+                    height={600}
+                    className="w-[20px] sm:w-[30px] lg:w-[50px] h-[20px] sm:h-[30px] lg:h-[50px]"
+                  />
+                  <Image
+                    src="/images/team.jpeg"
+                    alt="comparison"
+                    width={1000}
+                    height={600}
+                    className="h-auto w-[150px] sm:w-[200px] lg:w-[300px] border rounded-xl"
+                  />
+                  <Image
+                    src="/images/equal.png"
+                    alt="comparison"
+                    width={1000}
+                    height={600}
+                    className="h-auto w-[20px] sm:w-[30px] lg:w-[50px]"
+                  />
+                </div>
                 <div className="text-center space-y-4">
                   <h3 className="text-[22px] sm:text-[24px] md:text-[28px] lg:text-[28px] font-bold font-unbounded uppercase text-black leading-tight">
                     <span>

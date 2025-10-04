@@ -7,7 +7,11 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Social Icons */}
         <div className="flex justify-center gap-4 mb-12">
-          <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://www.instagram.com/trust.call_centr/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image
               src="/images/img_vector_white_a700.svg"
               alt="Facebook"
@@ -17,27 +21,35 @@ export default function Footer() {
             />
           </Link>
 
-          <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://www.youtube.com/channel/UCnVH4qbyZc8BMno0beXisOg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image
-              src="/images/img_vector_white_a700_48x48.svg"
-              alt="Twitter"
+              src="/images/youtube.png"
+              alt="YouTube"
+              width={48}
+              height={48}
+              className="w-12 h-12 transition grayscale hover:grayscale-0"
+            />
+          </Link>
+
+          <Link
+            href="https://api.whatsapp.com/send/?phone=3800971552677&text&type=phone_number&app_absent=0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/images/img_vector_3.svg"
+              alt="Telegram"
               width={48}
               height={48}
               className="w-12 h-12 hover:opacity-80 transition"
             />
           </Link>
 
-          <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/images/img_vector_48x48.svg"
-              alt="Instagram"
-              width={48}
-              height={48}
-              className="w-12 h-12 hover:opacity-80 transition"
-            />
-          </Link>
-
-          <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <Link href="trustcallcentr@gmail.com" target="_blank" rel="noopener noreferrer">
             <Image
               src="/images/img_vector_1.svg"
               alt="LinkedIn"
@@ -47,34 +59,22 @@ export default function Footer() {
             />
           </Link>
 
-          <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+          <Link href="https://t.me/trust_callcenter" target="_blank" rel="noopener noreferrer">
             <Image
-              src="/images/img_vector_2.svg"
-              alt="YouTube"
-              width={48}
-              height={48}
-              className="w-12 h-12 hover:opacity-80 transition"
-            />
-          </Link>
-
-          <Link href="https://t.me" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/images/img_vector_3.svg"
-              alt="Telegram"
+              src="/images/img_vector_white_a700_48x48.svg"
+              alt="Twitter"
               width={48}
               height={48}
               className="w-12 h-12 hover:opacity-80 transition"
             />
           </Link>
         </div>
-
         {/* Company Name */}
         <div className="text-center mb-8">
           <h2 className="text-[80px] sm:text-[120px] md:text-[160px] lg:text-[180px] font-semibold text-white leading-none text-inter">
             TRUST-CALL®
           </h2>
         </div>
-
         {/* Contact Email */}
         <div className="text-center mb-8">
           <a
@@ -84,7 +84,6 @@ export default function Footer() {
             trustcallcentr@gmail.com
           </a>
         </div>
-
         {/* Footer Navigation */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-8">
           <div className="text-[20px] sm:text-[24px] md:text-[30px] font-medium text-white uppercase text-unbounded">
@@ -123,7 +122,6 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
         {/* Footer Bottom */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-6 pt-8 border-t border-white/20">
           <div className="space-y-2">
@@ -145,6 +143,27 @@ export default function Footer() {
               вул. Люстдорфська дорога, 140
             </p>
           </div>
+        </div>{' '}
+        <div
+          className="fixed bottom-5 right-5 z-50 w-16 sm:w-20 lg:w-[98px] h-16 sm:h-20 lg:h-[98px] 
+             rounded-full bg-white/10 backdrop-blur-sm
+             shadow-[0_0_20px_5px_rgba(59,130,246,0.7)]
+             flex items-center justify-center"
+        >
+          <a href="tel:+380971552677">
+            <div
+              className="w-full h-full flex items-center justify-center cursor-pointer rounded-full
+                 transition-transform active:scale-95"
+            >
+              <Image
+                src="/images/img_phone_call_2_svg.svg"
+                alt="Phone Call"
+                width={60}
+                height={60}
+                className="w-12 sm:w-14 lg:w-[60px] h-12 sm:h-14 lg:h-[60px] animate-wiggle"
+              />
+            </div>
+          </a>
         </div>
       </div>
     </footer>

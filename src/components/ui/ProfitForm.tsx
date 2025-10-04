@@ -114,7 +114,10 @@ const ProfitForm = () => {
 
           {/* другий рядок (знижка + декор) */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-start">
-            <div className="bg-white rounded-[22px] px-6 py-2 text-center sm:text-left">
+            <p className="text-[25px] font-semibold text-white">
+              Швидка обробка замовлень та високий % допродажу
+            </p>
+            {/* <div className="bg-white rounded-[22px] px-6 py-2 text-center sm:text-left">
               <span className="text-[24px] sm:text-[27px] font-semibold text-black">
                 Знижка 10%
               </span>
@@ -123,7 +126,7 @@ const ProfitForm = () => {
               <span className="text-[24px] sm:text-[27px] font-semibold text-white ml-2">
                 на перший рахунок для нових клієнтів
               </span>
-            </div>
+            </div> */}
           </div>
         </form>
       </div>

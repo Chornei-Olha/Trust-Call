@@ -97,8 +97,32 @@ const TrustCallLandingPage: React.FC = () => {
   ];
   const caseStudies: CaseStudy[] = [
     {
+      id: 'clothing',
+      title: 'Жіночі костюми',
+      category: '(Інтернет-магазин)',
+      image: '/images/case3.png',
+
+      beforeStats: {
+        approval: '43%',
+        upsell: '38%',
+        averageCheck: '980 грн',
+        buyout: '73%',
+      },
+      afterStats: {
+        approval: '85%',
+        upsell: '83%',
+        averageCheck: '1380 грн',
+        buyout: '80%',
+      },
+      results: {
+        profitIncrease: '85%',
+        dailyEarnings: '6 850 грн на день',
+        monthlyProfit: '205 500 грн на місяць',
+      },
+    },
+    {
       id: 'bedding',
-      title: 'Продаж постільної білизни',
+      title: 'Текстильні вироби',
       category: '(Інтернет-магазин)',
       image: '/images/case1.png',
 
@@ -136,36 +160,12 @@ const TrustCallLandingPage: React.FC = () => {
         approval: '88%',
         upsell: '80%',
         averageCheck: '980 грн',
-        buyout: '99%',
+        buyout: '86%',
       },
       results: {
         profitIncrease: '43%',
         dailyEarnings: '3700 грн на день',
         monthlyProfit: '111 000 грн на місяць',
-      },
-    },
-    {
-      id: 'clothing',
-      title: 'Жіночий одяг',
-      category: '(Інтернет-магазин)',
-      image: '/images/case3.png',
-
-      beforeStats: {
-        approval: '43%',
-        upsell: '38%',
-        averageCheck: '980 грн',
-        buyout: '73%',
-      },
-      afterStats: {
-        approval: '95%',
-        upsell: '90%',
-        averageCheck: '1380 грн',
-        buyout: '95%',
-      },
-      results: {
-        profitIncrease: '85%',
-        dailyEarnings: '6 850 грн на день',
-        monthlyProfit: '205 500 грн на місяць',
       },
     },
   ];

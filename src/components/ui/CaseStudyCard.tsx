@@ -94,21 +94,21 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[14px] text-black">Середній чек</span>
-                    <span className="text-[14px] font-bold text-black">
-                      {study.beforeStats.averageCheck}
-                    </span>
-                    <span className="text-[14px] font-bold text-black">
-                      {study.afterStats.averageCheck}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
                     <span className="text-[14px] text-black">Викуп</span>
                     <span className="text-[13px] font-bold text-black">
                       {study.beforeStats.buyout}
                     </span>
                     <span className="text-[13px] font-bold text-black">
                       {study.afterStats.buyout}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[14px] text-black">Середній чек</span>
+                    <span className="text-[14px] font-bold text-black">
+                      {study.beforeStats.averageCheck}
+                    </span>
+                    <span className="text-[14px] font-bold text-black">
+                      {study.afterStats.averageCheck}
                     </span>
                   </div>
                 </div>
@@ -175,10 +175,10 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                   Upsell: <span className="font-bold">{study.afterStats.upsell}</span>
                 </p>
                 <p className="text-[14px] text-black">
-                  Середній чек: <span className="font-bold">{study.afterStats.averageCheck}</span>
+                  Викуп: <span className="font-bold">{study.afterStats.buyout}</span>
                 </p>
                 <p className="text-[14px] text-black">
-                  Викуп: <span className="font-bold">{study.afterStats.buyout}</span>
+                  Середній чек: <span className="font-bold">{study.afterStats.averageCheck}</span>
                 </p>
               </div>
 
