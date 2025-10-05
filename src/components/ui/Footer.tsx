@@ -49,10 +49,10 @@ export default function Footer() {
             />
           </Link>
 
-          <Link href="trustcallcentr@gmail.com" target="_blank" rel="noopener noreferrer">
+          <Link href="mailto:trustcallcentr@gmail.com" target="_blank" rel="noopener noreferrer">
             <Image
               src="/images/img_vector_1.svg"
-              alt="LinkedIn"
+              alt="mail"
               width={48}
               height={48}
               className="w-12 h-12 hover:opacity-80 transition"
