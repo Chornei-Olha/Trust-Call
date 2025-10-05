@@ -97,10 +97,82 @@ const TrustCallLandingPage: React.FC = () => {
   ];
   const caseStudies: CaseStudy[] = [
     {
+      id: 'appliances',
+      title: 'Насіння квітів, овочів, фруктів',
+      category: '(Інтернет-магазин)',
+      image: '/images/case1.webp',
+
+      beforeStats: {
+        approval: '150%',
+        upsell: '30%',
+        averageCheck: '200 грн',
+        buyout: '59%',
+      },
+      afterStats: {
+        approval: '240%',
+        upsell: '95%',
+        averageCheck: '450 грн',
+        buyout: '82%',
+      },
+      results: {
+        profitIncrease: 'в 2.5 рази',
+        dailyEarnings: '2000 грн на день',
+        monthlyProfit: '60 000 грн на місяць',
+      },
+    },
+    {
+      id: 'appliances',
+      title: 'Парфумерія та косметика',
+      category: '(Інтернет-магазин)',
+      image: '/images/card3.png',
+
+      beforeStats: {
+        approval: '67%',
+        upsell: '25%',
+        averageCheck: '449 грн',
+        buyout: '65%',
+      },
+      afterStats: {
+        approval: '95%',
+        upsell: '85%',
+        averageCheck: '897 грн',
+        buyout: '84%',
+      },
+      results: {
+        profitIncrease: 'в 3 рази',
+        dailyEarnings: '13 780 грн на день',
+        monthlyProfit: '304 560 грн на місяць',
+      },
+    },
+    {
+      id: 'appliances',
+      title: 'Садженці троянди',
+      category: '(Інтернет-магазин)',
+      image: '/images/case3.webp',
+
+      beforeStats: {
+        approval: '50%',
+        upsell: '46%',
+        averageCheck: '380 грн',
+        buyout: '65%',
+      },
+      afterStats: {
+        approval: '89%',
+        upsell: '73%',
+        averageCheck: '574 грн',
+        buyout: '84%',
+      },
+      results: {
+        profitIncrease: 'в 1.5 рази',
+        dailyEarnings: '12 900 грн на день',
+        monthlyProfit: '10 300 грн / 100 замовлень',
+      },
+    },
+    {
       id: 'clothing',
       title: 'Жіночі костюми',
       category: '(Інтернет-магазин)',
-      image: '/images/case3.png',
+      image: '/images/case4.webp',
 
       beforeStats: {
         approval: '43%',
@@ -124,7 +196,7 @@ const TrustCallLandingPage: React.FC = () => {
       id: 'bedding',
       title: 'Текстильні вироби',
       category: '(Інтернет-магазин)',
-      image: '/images/case1.png',
+      image: '/images/case5.webp',
 
       beforeStats: {
         approval: '72%',
@@ -140,7 +212,7 @@ const TrustCallLandingPage: React.FC = () => {
       },
       results: {
         profitIncrease: 'X3',
-        dailyEarnings: '4500 грн на день',
+        dailyEarnings: '4 500 грн на день',
         monthlyProfit: '135 000 грн на місяць',
       },
     },
@@ -148,7 +220,7 @@ const TrustCallLandingPage: React.FC = () => {
       id: 'appliances',
       title: 'Дрібна побутова техніка',
       category: '(Інтернет-магазин)',
-      image: '/images/case2.png',
+      image: '/images/card1.webp',
 
       beforeStats: {
         approval: '23%',
@@ -164,7 +236,7 @@ const TrustCallLandingPage: React.FC = () => {
       },
       results: {
         profitIncrease: '43%',
-        dailyEarnings: '3700 грн на день',
+        dailyEarnings: '3 700 грн на день',
         monthlyProfit: '111 000 грн на місяць',
       },
     },
