@@ -49,7 +49,7 @@ const QualityAssessment = () => {
           <h2 className="text-[30px] sm:text-[48px] md:text-[55px] uppercase font-semibold font-unbounded text-white leading-tight">
             ОЦІНІТЬ ЯКІСТЬ РОБОТИ
             <br />
-            НАШИХ ОПЕРАТОРІВ
+            НАШИХ МЕНЕДЖЕРІВ
           </h2>
           <div className="mt-8">
             <div className="bg-[#0066fb] rounded-[30px] px-6 py-3 inline-block shadow-2xl transform rotate-[5deg]">

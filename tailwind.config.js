@@ -56,9 +56,14 @@ module.exports = {
           '0%, 100%': { transform: 'rotate(-3deg)' },
           '50%': { transform: 'rotate(3deg)' },
         },
+        pulseStrong: {
+          '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+          '50%': { opacity: 0.8, transform: 'scale(1.1)' },
+        },
       },
       animation: {
         wiggle: 'wiggle 0.5s ease-in-out infinite',
+        pulseStrong: 'pulseStrong 1.5s ease-in-out infinite',
       },
     },
   },

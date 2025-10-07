@@ -216,10 +216,14 @@ const ClientReviews: React.FC = () => {
             />
             <div className="flex-1">
               <h3 className="text-[18px] sm:text-[28px] md:text-[34px] font-bold font-unbounded uppercase text-white leading-tight px-3 sm:px-[100px]">
-                <span>Підвищимо апрув </span>
-                <span className="text-[#1663d3]">до 95%</span>
-                <span> та помножимо Ваш прибуток </span>
-                <span className="text-[#1663d3]">мінімум у 2 рази!</span>
+                <span>
+                  Ми — лідери на ринку,
+                  <br />
+                  що
+                </span>
+                <span className="text-[#1663d3]"> підтвержено результатом. </span>
+                <span>Гарантовано помножимо Ваш прибуток</span>
+                <span className="text-[#1663d3]"> мінімум у 2 рази!</span>
               </h3>
             </div>
             <Image

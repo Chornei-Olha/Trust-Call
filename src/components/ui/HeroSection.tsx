@@ -49,9 +49,11 @@ export default function HeroSection() {
               для товарного бізнесу
             </p>
             <p className="text-[18px] sm:text-[24px] md:text-[30px] font-light leading-relaxed text-white max-w-5xl">
-              Тестовий період перед підключенням – ми обробимо
+              Наша роль — бути турбо двигуном вашого бізнесу. Ми будуємо чіткий механізм вашого
+              зростання.
               <br />
-              ваші перші 50 лідів <span className="font-medium">АБСОЛЮТНО БЕЗКОШТОВНО</span>
+              Апсейл, кросс-сел, лояльність — налаштуємо наш "завод" під ваші цілі.
+              {/* ваші перші 50 лідів <span className="font-medium">АБСОЛЮТНО БЕЗКОШТОВНО</span> */}
             </p>
             <div className="flex flex-col sm:flex-row gap-8 items-start sm:items-center pb-[80px] sm:pb-[200px]">
               <Button

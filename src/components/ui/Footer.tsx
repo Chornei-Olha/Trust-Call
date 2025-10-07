@@ -150,7 +150,7 @@ export default function Footer() {
              shadow-[0_0_20px_5px_rgba(59,130,246,0.7)]
              flex items-center justify-center"
         >
-          <a href="tel:+380971552677">
+          <a href="tel:+380963411753">
             <div
               className="w-full h-full flex items-center justify-center cursor-pointer rounded-full
                  transition-transform active:scale-95"

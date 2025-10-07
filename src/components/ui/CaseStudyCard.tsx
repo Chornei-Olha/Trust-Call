@@ -82,7 +82,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                   <div className="flex justify-between items-center text-[14px] text-black font-medium">
                     <span>Показник</span>
                     <span>До</span>
-                    <span>Після</span>
+                    <span className="text-[#0066FF] animate-pulseStrong">Після</span>
                   </div>
                 </div>
 
@@ -96,7 +96,9 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                     <div key={label} className="flex justify-between items-center">
                       <span className="text-[14px] text-black">{label}</span>
                       <span className="text-[14px] font-bold text-black">{before}</span>
-                      <span className="text-[14px] font-bold text-black">{after}</span>
+                      <span className="text-[14px] font-bold text-[#0066FF] drop-shadow-[0_0_6px_rgba(0,102,255,0.4)]">
+                        {after}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -113,19 +115,19 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                 <div className="text-left space-y-1 px-3 py-5">
                   <p className="text-[14px] text-[#404040] font-medium">
                     <span>Збільшили чистий прибуток: </span>
-                    <span className="text-[#1663d3] font-semibold">
+                    <span className="text-[#0066FF] drop-shadow-[0_0_6px_rgba(0,102,255,0.4)] font-semibold">
                       {study.results.profitIncrease}
                     </span>
                   </p>
                   <p className="text-[14px] text-[#404040] font-medium">
                     <span>Додатковий заробіток: </span>
-                    <span className="text-[#1663d3] font-semibold">
+                    <span className="text-[#0066FF] drop-shadow-[0_0_6px_rgba(0,102,255,0.4)] font-semibold">
                       {study.results.dailyEarnings}
                     </span>
                   </p>
                   <p className="text-[14px] text-[#404040] font-medium">
                     <span>Додатковий прибуток: </span>
-                    <span className="text-[#1663d3] font-semibold">
+                    <span className="text-[#0066FF] drop-shadow-[0_0_6px_rgba(0,102,255,0.4)] font-semibold">
                       {study.results.monthlyProfit}
                     </span>
                   </p>
