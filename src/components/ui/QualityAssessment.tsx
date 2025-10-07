@@ -4,37 +4,38 @@ import Image from 'next/image';
 const QualityAssessment = () => {
   const items = [
     {
-      title: 'Дрібна побутова техніка',
+      title: 'TV-Shop товари',
+
       image: '/images/card1.webp',
-      amount: '698 грн',
+      amount: '1049 грн',
       duration: '2:28',
       audio: '/audio/audio1.mp3',
     },
     {
-      title: 'TV-Shop товари',
+      title: 'Дрібна побутова техніка',
       image: '/images/card2.jpeg',
-      amount: '1058 грн',
+      amount: '1487 грн',
       duration: '2:50',
       audio: '/audio/audio5.mp3',
     },
     {
-      title: 'TV-Shop товари',
+      title: 'Парфумерія',
       image: '/images/card3.png',
-      amount: '1198 грн',
+      amount: '998 грн',
       duration: '2:38',
       audio: '/audio/audio3.mp3',
     },
     {
       title: 'Акумуляторна пила',
       image: '/images/card4.jpg',
-      amount: '1017 грн',
+      amount: '2450 грн',
       duration: '5:32',
       audio: '/audio/audio2.mp3',
     },
     {
       title: 'Комплекти постільної білизни',
       image: '/images/card5.webp',
-      amount: '1058 грн',
+      amount: '1747 грн',
       duration: '2:50',
       audio: '/audio/audio4.mp3',
     },

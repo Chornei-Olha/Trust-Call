@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 
@@ -26,28 +26,42 @@ export interface CaseStudy {
     dailyEarnings: string;
     monthlyProfit: string;
   };
+  text: string;
 }
 
 interface CaseStudyCardProps {
-  study: CaseStudy; // 👈 одна карточка
+  study: CaseStudy;
 }
 
 export default function CaseStudyCard({ study }: CaseStudyCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [cardHeight, setCardHeight] = useState<number | 'auto'>('auto');
+
+  const frontRef = useRef<HTMLDivElement>(null);
+  const backRef = useRef<HTMLDivElement>(null);
+
+  // 👇 вимірюємо висоту поточної сторони
+  useEffect(() => {
+    const current = isFlipped ? backRef.current : frontRef.current;
+    if (current) {
+      setCardHeight(current.scrollHeight);
+    }
+  }, [isFlipped]);
 
   return (
     <div
-      className="relative w-full h-[700px] sm:h-[850px] [perspective:1000px] cursor-pointer" // 👈 фиксированная высота
+      className="relative w-full transition-[height] duration-500 ease-in-out [perspective:1000px] cursor-pointer"
+      style={{ height: cardHeight === 'auto' ? 'auto' : `${cardHeight}px` }}
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <div
-        className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${
+        className={`relative w-full transition-transform duration-700 [transform-style:preserve-3d] ${
           isFlipped ? '[transform:rotateY(180deg)]' : ''
         }`}
       >
         {/* FRONT */}
-        <div className="absolute inset-0 [backface-visibility:hidden]">
-          <div className="bg-gradient-to-b from-[#1663d3] to-[#f0f0f0] rounded-[10px] overflow-hidden h-full">
+        <div ref={frontRef} className="absolute inset-0 [backface-visibility:hidden]">
+          <div className="bg-gradient-to-b from-[#1663d3] to-[#f0f0f0] rounded-[10px] overflow-hidden">
             <div className="p-6 space-y-4">
               <Image
                 src={study.image}
@@ -58,84 +72,58 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
               />
 
               <div className="text-center space-y-2">
-                <h3 className="text-[16px] sm:text-[18px] md:text-[19px] font-semibold text-[#404040] leading-tight">
-                  {study.title}
-                </h3>
-                <p className="text-[14px] sm:text-[16px] text-[#404040]">{study.category}</p>
+                <h3 className="text-[18px] font-semibold text-[#404040]">{study.title}</h3>
+                <p className="text-[14px] text-[#404040]">{study.category}</p>
               </div>
 
-              {/* Таблица показателей */}
+              {/* Таблиця показників */}
               <div className="space-y-0">
                 <div className="bg-white rounded-[10px] px-6 py-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[14px] text-black">Показник</span>
-                    <span className="text-[14px] text-black">До</span>
-                    <span className="text-[14px] text-black">Після</span>
+                  <div className="flex justify-between items-center text-[14px] text-black font-medium">
+                    <span>Показник</span>
+                    <span>До</span>
+                    <span>Після</span>
                   </div>
                 </div>
 
                 <div className="bg-[#efeae4] rounded-[10px] p-3 space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[14px] text-black">Апрув</span>
-                    <span className="text-[14px] font-bold text-black">
-                      {study.beforeStats.approval}
-                    </span>
-                    <span className="text-[14px] font-bold text-black">
-                      {study.afterStats.approval}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[15px] text-black">Upsell</span>
-                    <span className="text-[13px] font-bold text-black">
-                      {study.beforeStats.upsell}
-                    </span>
-                    <span className="text-[13px] font-bold text-black">
-                      {study.afterStats.upsell}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[14px] text-black">Викуп</span>
-                    <span className="text-[13px] font-bold text-black">
-                      {study.beforeStats.buyout}
-                    </span>
-                    <span className="text-[13px] font-bold text-black">
-                      {study.afterStats.buyout}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[14px] text-black">Середній чек</span>
-                    <span className="text-[14px] font-bold text-black">
-                      {study.beforeStats.averageCheck}
-                    </span>
-                    <span className="text-[14px] font-bold text-black">
-                      {study.afterStats.averageCheck}
-                    </span>
-                  </div>
+                  {[
+                    ['Апрув', study.beforeStats.approval, study.afterStats.approval],
+                    ['Upsell', study.beforeStats.upsell, study.afterStats.upsell],
+                    ['Викуп', study.beforeStats.buyout, study.afterStats.buyout],
+                    ['Середній чек', study.beforeStats.averageCheck, study.afterStats.averageCheck],
+                  ].map(([label, before, after]) => (
+                    <div key={label} className="flex justify-between items-center">
+                      <span className="text-[14px] text-black">{label}</span>
+                      <span className="text-[14px] font-bold text-black">{before}</span>
+                      <span className="text-[14px] font-bold text-black">{after}</span>
+                    </div>
+                  ))}
                 </div>
 
                 <Button
                   variant="brand"
                   size="lg"
                   fullWidth
-                  className="text-[20px] font-bold text-white"
+                  className="text-[18px] font-bold text-white"
                 >
                   РАЗОМ
                 </Button>
 
                 <div className="text-left space-y-1 px-3 py-5">
-                  <p className="text-[14px] font-medium text-[#404040]">
+                  <p className="text-[14px] text-[#404040] font-medium">
                     <span>Збільшили чистий прибуток: </span>
                     <span className="text-[#1663d3] font-semibold">
                       {study.results.profitIncrease}
                     </span>
                   </p>
-                  <p className="text-[14px] font-medium text-[#404040]">
+                  <p className="text-[14px] text-[#404040] font-medium">
                     <span>Додатковий заробіток: </span>
                     <span className="text-[#1663d3] font-semibold">
                       {study.results.dailyEarnings}
                     </span>
                   </p>
-                  <p className="text-[14px] font-medium text-[#404040]">
+                  <p className="text-[14px] text-[#404040] font-medium">
                     <span>Додатковий прибуток: </span>
                     <span className="text-[#1663d3] font-semibold">
                       {study.results.monthlyProfit}
@@ -143,13 +131,13 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                   </p>
                 </div>
 
-                <div className="text-center">
+                <div className="text-center pt-2">
                   <Image
                     src="/images/img_symbol.svg"
                     alt="expand"
                     width={18}
                     height={22}
-                    className="w-[18px] h-[22px] mx-auto"
+                    className="mx-auto"
                   />
                   <p className="text-[12px] text-black mt-1">Перегорнути</p>
                 </div>
@@ -159,14 +147,17 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
         </div>
 
         {/* BACK */}
-        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-          <div className="bg-gradient-to-b from-[#1663d3] to-[#f0f0f0] rounded-[10px] overflow-hidden h-full">
-            <div className="p-6 space-y-4">
-              <h3 className="text-[18px] font-semibold text-[#404040] text-center">
+        <div
+          ref={backRef}
+          className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+        >
+          <div className="bg-gradient-to-b from-[#1663d3] to-[#f0f0f0] rounded-[10px] overflow-hidden">
+            <div className="p-6 flex flex-col">
+              <h3 className="text-[18px] font-semibold text-[#404040] text-center mb-4">
                 {study.title} — інші результати
               </h3>
 
-              <div className="bg-[#efeae4] rounded-[10px] p-3 space-y-3">
+              <div className="bg-[#efeae4] rounded-[10px] p-3 space-y-2 mb-4">
                 <p className="text-[14px] text-black">
                   Апрув після оптимізації:{' '}
                   <span className="font-bold">{study.afterStats.approval}</span>
@@ -182,7 +173,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                 </p>
               </div>
 
-              <div className="text-left space-y-1 px-3 py-5">
+              <div className="text-left space-y-2 mb-4 px-2">
                 <p className="text-[14px] font-medium text-[#404040]">
                   <span>Збільшили чистий прибуток: </span>
                   <span className="text-[#1663d3] font-semibold">
@@ -201,15 +192,20 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                     {study.results.monthlyProfit}
                   </span>
                 </p>
+
+                <div
+                  className="text-[14px] text-[#404040] leading-relaxed mt-3"
+                  dangerouslySetInnerHTML={{ __html: study.text }}
+                />
               </div>
 
-              <div className="text-center">
+              <div className="text-center mt-4">
                 <Image
                   src="/images/img_symbol.svg"
                   alt="expand"
                   width={18}
                   height={22}
-                  className="w-[18px] h-[22px] mx-auto"
+                  className="mx-auto"
                 />
                 <p className="text-[12px] text-black mt-1">Назад</p>
               </div>

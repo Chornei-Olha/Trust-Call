@@ -42,7 +42,7 @@ export default function Footer() {
           >
             <Image
               src="/images/img_vector_3.svg"
-              alt="Telegram"
+              alt="WhatsApp"
               width={48}
               height={48}
               className="w-12 h-12 hover:opacity-80 transition"
@@ -62,7 +62,7 @@ export default function Footer() {
           <Link href="https://t.me/trust_callcenter" target="_blank" rel="noopener noreferrer">
             <Image
               src="/images/img_vector_white_a700_48x48.svg"
-              alt="Twitter"
+              alt="Telegram"
               width={48}
               height={48}
               className="w-12 h-12 hover:opacity-80 transition"

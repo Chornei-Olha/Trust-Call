@@ -17,9 +17,9 @@ export default function HeroSection() {
 
       <div className="absolute right-[25px] top-1/2 transform -translate-y-1/2 hidden md:flex flex-col items-center gap-[46px] bg-black/10 rounded-[36px] px-[15px] py-[25px] z-20">
         {[
-          { text: 'TWITTER', href: 'https://x.com/' },
-          { text: 'FACEBOOK', href: 'https://www.facebook.com/' },
-          { text: 'INSTAGRAM', href: 'https://instagram.com/yourprofile' },
+          { text: 'YOUTUBE', href: 'https://www.youtube.com/channel/UCnVH4qbyZc8BMno0beXisOg' },
+          { text: 'TELEGRAM', href: 'https://t.me/trust_callcenter' },
+          { text: 'INSTAGRAM', href: 'https://www.instagram.com/trust.call_centr/' },
         ].map(({ text, href }, idx) => (
           <a
             key={idx}

@@ -24,7 +24,7 @@ type ClientReviewsProps = {
 const testimonials: Testimonial[] = [
   {
     id: '1',
-    name: 'Дмитро',
+    name: 'Дмитро Романюк',
     niche: 'Власник інтернет магазину',
     leadCount: '400+ ЛІДІВ НА ДЕНЬ',
     rating: 5,
@@ -44,7 +44,7 @@ const testimonials: Testimonial[] = [
   },
   {
     id: '3',
-    name: 'Єлизавета',
+    name: 'Єлизавета Левченко',
     niche: 'Продажі електроніки через односторінкові сайти',
     leadCount: '250+ ЛІДІВ НА ДЕНЬ',
     rating: 5,

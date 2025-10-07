@@ -110,17 +110,27 @@ export default function FinalCTA() {
                     </h4>
                     <div className="swing bg-[#1663d4] rounded-lg px-6 sm:px-8 py-4 sm:py-6 inline-block transform -rotate-6 font-unbounded">
                       <span className="text-[24px] sm:text-[32px] md:text-[42px] font-medium uppercase text-white">
-                        Знижка 10%
+                        ПОДАРУНОК
                       </span>
                     </div>
                     <p className="text-[24px] sm:text-[32px] md:text-[42px] font-medium font-unbounded uppercase text-black leading-tight">
                       <span>
-                        на перший
+                        1 місяц
                         <br />
-                        рахунок для
+                        використання
                         <br />
                       </span>
-                      <span className="text-[#0041ff]">нових клієнтів</span>
+                      {/* <span className="text-[#0041ff]">LP- CRM</span> */}
+                      <span>
+                        {' '}
+                        <Image
+                          src="/images/LP-CRM.svg"
+                          alt="LP-CRM logo"
+                          width={60}
+                          height={60}
+                          className="inline-block align-middle w-[150px]"
+                        />
+                      </span>
                     </p>
                   </div>
                 </div>
