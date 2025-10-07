@@ -81,7 +81,7 @@ const BenefitsSection = () => {
                 )}
 
                 <div className="space-y-6">
-                  <h3 className="text-[18px] sm:text-[20px] font-bold font-inter text-white whitespace-pre-line">
+                  <h3 className="text-[18px] sm:text-[20px] max-w-[90%] font-bold font-inter text-white whitespace-pre-line">
                     {benefit.title}
                   </h3>
                   <p className="text-[14px] font-bold font-inter text-white/70 leading-relaxed">
