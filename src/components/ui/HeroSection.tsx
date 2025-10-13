@@ -1,10 +1,14 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import Header from './Header';
+import PopupForm from '@/components/ui/PopupForm';
 
 export default function HeroSection() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   return (
     <section
       className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat"
@@ -60,12 +64,7 @@ export default function HeroSection() {
                 variant="secondary"
                 size="lg"
                 className="animate-pulse-scale text-[16px] sm:text-[20px] font-medium px-6 sm:px-8 py-2 mt-5 sm:mt-2"
-                onClick={() => {
-                  const formEl = document.getElementById('form');
-                  if (formEl) {
-                    formEl.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => setIsPopupOpen(true)}
               >
                 Отримати консультацію
               </Button>
@@ -154,6 +153,7 @@ export default function HeroSection() {
           ))}
         </div>
       </div>
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </section>
   );
 }
