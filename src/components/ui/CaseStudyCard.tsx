@@ -72,7 +72,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
               />
 
               <div className="text-center space-y-2">
-                <h3 className="text-[18px] font-semibold text-[#404040]">{study.title}</h3>
+                <h3 className="text-[18px] font-semibold text-[#fff]">{study.title}</h3>
                 <p className="text-[14px] text-[#404040]">{study.category}</p>
               </div>
 
@@ -155,7 +155,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
         >
           <div className="bg-gradient-to-b from-[#1663d3] to-[#f0f0f0] rounded-[10px] overflow-hidden">
             <div className="p-6 flex flex-col">
-              <h3 className="text-[18px] font-semibold text-[#404040] text-center mb-4">
+              <h3 className="text-[18px] font-semibold text-[#fff] text-center mb-4">
                 {study.title} — інші результати
               </h3>
 
@@ -175,20 +175,20 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                 </p>
               </div>
 
-              <div className="text-left space-y-2 mb-4 px-2">
-                <p className="text-[14px] font-medium text-[#404040]">
+              <div className="bg-[#efeae4] rounded-[10px] text-left p-3 space-y-2 mb-4">
+                <p className="text-[14px] font-medium text-black">
                   <span>Збільшили чистий прибуток: </span>
                   <span className="text-[#1663d3] font-semibold">
                     {study.results.profitIncrease}
                   </span>
                 </p>
-                <p className="text-[14px] font-medium text-[#404040]">
+                <p className="text-[14px] font-medium text-black">
                   <span>Додатковий заробіток: </span>
                   <span className="text-[#1663d3] font-semibold">
                     {study.results.dailyEarnings}
                   </span>
                 </p>
-                <p className="text-[14px] font-medium text-[#404040]">
+                <p className="text-[14px] font-medium text-black">
                   <span>Додатковий прибуток: </span>
                   <span className="text-[#1663d3] font-semibold">
                     {study.results.monthlyProfit}
@@ -196,7 +196,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                 </p>
 
                 <div
-                  className="text-[14px] text-[#404040] leading-relaxed mt-3"
+                  className="text-[14px] text-black leading-relaxed mt-3"
                   dangerouslySetInnerHTML={{ __html: study.text }}
                 />
               </div>

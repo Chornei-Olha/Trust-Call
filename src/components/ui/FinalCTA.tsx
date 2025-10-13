@@ -17,7 +17,30 @@ export default function FinalCTA() {
   const [phone, setPhone] = useState('');
   const [contactMethod, setContactMethod] = useState('Дзвінок');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   const templateParams = {
+  //     name,
+  //     phone: `${selectedCountry.code} ${phone}`,
+  //     contactMethod,
+  //   };
+
+  //   emailjs.send('service_v33od0d', 'template_dfl7sos', templateParams, 'sr_aVM5WYfgNWFCze').then(
+  //     () => {
+  //       alert('✅ Дякуємо! Ми скоро з вами зв’яжемося.');
+  //       setName('Олексій');
+  //       setPhone('');
+  //       setContactMethod('Дзвінок');
+  //     },
+  //     (error) => {
+  //       console.error('FAILED...', error.text);
+  //       alert('❌ Сталася помилка. Спробуйте ще раз.');
+  //     }
+  //   );
+  // };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const templateParams = {
@@ -26,18 +49,35 @@ export default function FinalCTA() {
       contactMethod,
     };
 
-    emailjs.send('service_v33od0d', 'template_dfl7sos', templateParams, 'sr_aVM5WYfgNWFCze').then(
-      () => {
-        alert('✅ Дякуємо! Ми скоро з вами зв’яжемося.');
-        setName('Олексій');
-        setPhone('');
-        setContactMethod('Дзвінок');
-      },
-      (error) => {
-        console.error('FAILED...', error.text);
-        alert('❌ Сталася помилка. Спробуйте ще раз.');
-      }
-    );
+    try {
+      // 1️⃣ Відправка через EmailJS (як було)
+      await emailjs.send(
+        'service_v33od0d',
+        'template_dfl7sos',
+        templateParams,
+        'sr_aVM5WYfgNWFCze'
+      );
+
+      // 2️⃣ ДОДАЄМО: надсилання дублю в Telegram через наш API
+      await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone: `${selectedCountry.code} ${phone}`,
+          message: `Зв'язатися через: ${contactMethod} (форма FinalCTA)`,
+        }),
+      });
+
+      // 3️⃣ Повідомлення про успіх
+      alert('✅ Дякуємо! Ми скоро з вами зв’яжемося.');
+      setName('Олексій');
+      setPhone('');
+      setContactMethod('Дзвінок');
+    } catch (error) {
+      console.error('FAILED...', error);
+      alert('❌ Сталася помилка. Спробуйте ще раз.');
+    }
   };
 
   return (
@@ -115,7 +155,7 @@ export default function FinalCTA() {
                     </div>
                     <p className="text-[24px] sm:text-[32px] md:text-[42px] font-medium font-unbounded uppercase text-black leading-tight">
                       <span>
-                        1 місяц
+                        1 місяць
                         <br />
                         використання
                         <br />
@@ -186,12 +226,22 @@ export default function FinalCTA() {
                       type="tel"
                       placeholder="(99) 999-99-99"
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onChange={(e) => {
+                        // Разрешаем только цифры
+                        const digitsOnly = e.target.value.replace(/\D/g, '');
+                        // Ограничиваем длину (например, максимум 9 цифр)
+                        if (digitsOnly.length <= 9) {
+                          setPhone(digitsOnly);
+                        }
+                      }}
+                      maxLength={9} // дополнительная защита
+                      inputMode="numeric" // мобильная клавиатура только с цифрами
                       className="flex-1 px-3 sm:px-5 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] sm:text-[16px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
                       required
                     />
                   </div>
                 </div>
+
                 <div>
                   <label className="block text-[20px] sm:text-[25px] font-semibold font-inter text-[#202020] mb-4">
                     Як зручніше зв'язатися:

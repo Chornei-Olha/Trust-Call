@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
   {
     id: '1',
     name: 'Дмитро Романюк',
-    niche: 'Власник інтернет магазину',
+    niche: 'Продажі через односторінкові сайти',
     leadCount: '400+ ЛІДІВ НА ДЕНЬ',
     rating: 5,
     avatar: '/images/img_img.png',
@@ -45,7 +45,7 @@ const testimonials: Testimonial[] = [
   {
     id: '3',
     name: 'Єлизавета Левченко',
-    niche: 'Продажі електроніки через односторінкові сайти',
+    niche: 'Продажі через односторінкові сайти',
     leadCount: '250+ ЛІДІВ НА ДЕНЬ',
     rating: 5,
     avatar: '/images/img_img_1.png',

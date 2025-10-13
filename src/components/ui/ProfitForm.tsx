@@ -14,22 +14,59 @@ const ProfitForm = () => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
+  // const handleFormSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   const templateParams = {
+  //     name: formData.name,
+  //     phone: `+380 ${formData.phone}`, // фиксированный код (можно сделать селектор как в FinalCTA)
+  //   };
+
+  //   try {
+  //     await emailjs.send(
+  //       'service_v33od0d', // ID сервиса
+  //       'template_dfl7sos', // ID шаблона
+  //       templateParams, // данные формы
+  //       'sr_aVM5WYfgNWFCze' // public key
+  //     );
+
+  //     alert('✅ Дякуємо! Ми скоро з вами зв’яжемося.');
+  //     setFormData({ name: '', phone: '' });
+  //   } catch (err: any) {
+  //     console.error('FAILED...', err);
+  //     alert('❌ Сталася помилка. Спробуйте ще раз.');
+  //   }
+  // };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const templateParams = {
       name: formData.name,
-      phone: `+380 ${formData.phone}`, // фиксированный код (можно сделать селектор как в FinalCTA)
+      phone: `+380 ${formData.phone}`,
     };
 
     try {
+      // 1️⃣ Відправляємо через EmailJS
       await emailjs.send(
-        'service_v33od0d', // ID сервиса
-        'template_dfl7sos', // ID шаблона
-        templateParams, // данные формы
+        'service_v33od0d', // ID сервісу
+        'template_dfl7sos', // ID шаблону
+        templateParams, // дані форми
         'sr_aVM5WYfgNWFCze' // public key
       );
 
+      // 2️⃣ ДОДАЄМО: відправка дублю в Telegram через API маршрутизатор
+      await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: `+380 ${formData.phone}`,
+          message: 'Заявка з форми ProfitForm',
+        }),
+      });
+
+      // 3️⃣ Повідомлення про успіх
       alert('✅ Дякуємо! Ми скоро з вами зв’яжемося.');
       setFormData({ name: '', phone: '' });
     } catch (err: any) {
@@ -83,8 +120,17 @@ const ProfitForm = () => {
                 </div>
                 <input
                   type="tel"
+                  inputMode="numeric" // открывает цифровую клавиатуру на мобильных
                   value={formData.phone}
-                  onChange={(e) => handleInputChange('phone', e.target.value)}
+                  onChange={(e) => {
+                    // Удаляем все символы, кроме цифр
+                    const digitsOnly = e.target.value.replace(/\D/g, '');
+                    // Разрешаем максимум 9 цифр (для формата +380)
+                    if (digitsOnly.length <= 9) {
+                      handleInputChange('phone', digitsOnly);
+                    }
+                  }}
+                  maxLength={9} // дополнительное ограничение
                   className="w-full pl-20 pr-5 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
                   placeholder="(99) 999-99-99"
                   required

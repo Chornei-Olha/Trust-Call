@@ -19,7 +19,37 @@ export default function PopupForm({ isOpen, onClose }: { isOpen: boolean; onClos
   const [contactMethod, setContactMethod] = useState('Дзвінок');
   const [showThankYou, setShowThankYou] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   const templateParams = {
+  //     name,
+  //     phone: `${selectedCountry.code} ${phone}`,
+  //     contactMethod,
+  //   };
+
+  //   emailjs.send('service_v33od0d', 'template_dfl7sos', templateParams, 'sr_aVM5WYfgNWFCze').then(
+  //     () => {
+  //       // показываем окно благодарности
+  //       setShowThankYou(true);
+  //       // очищаем форму
+  //       setName('Олексій');
+  //       setPhone('');
+  //       setContactMethod('Дзвінок');
+  //       // закрываем попап через 3 сек
+  //       setTimeout(() => {
+  //         setShowThankYou(false);
+  //         onClose();
+  //       }, 3000);
+  //     },
+  //     (error) => {
+  //       console.error('FAILED...', error.text);
+  //       alert('❌ Сталася помилка. Спробуйте ще раз.');
+  //     }
+  //   );
+  // };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const templateParams = {
@@ -28,25 +58,40 @@ export default function PopupForm({ isOpen, onClose }: { isOpen: boolean; onClos
       contactMethod,
     };
 
-    emailjs.send('service_v33od0d', 'template_dfl7sos', templateParams, 'sr_aVM5WYfgNWFCze').then(
-      () => {
-        // показываем окно благодарности
-        setShowThankYou(true);
-        // очищаем форму
-        setName('Олексій');
-        setPhone('');
-        setContactMethod('Дзвінок');
-        // закрываем попап через 3 сек
-        setTimeout(() => {
-          setShowThankYou(false);
-          onClose();
-        }, 3000);
-      },
-      (error) => {
-        console.error('FAILED...', error.text);
-        alert('❌ Сталася помилка. Спробуйте ще раз.');
-      }
-    );
+    try {
+      // 1️⃣ Надсилаємо через EmailJS
+      await emailjs.send(
+        'service_v33od0d',
+        'template_dfl7sos',
+        templateParams,
+        'sr_aVM5WYfgNWFCze'
+      );
+
+      // 2️⃣ ДОДАЄМО: надсилаємо дубль у Telegram через наш API
+      await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone: `${selectedCountry.code} ${phone}`,
+          message: `Зв'язатися через: ${contactMethod}`,
+        }),
+      });
+
+      // 3️⃣ Показуємо вікно подяки
+      setShowThankYou(true);
+      setName('Олексій');
+      setPhone('');
+      setContactMethod('Дзвінок');
+
+      setTimeout(() => {
+        setShowThankYou(false);
+        onClose();
+      }, 3000);
+    } catch (error) {
+      console.error('FAILED...', error);
+      alert('❌ Сталася помилка. Спробуйте ще раз.');
+    }
   };
 
   return (

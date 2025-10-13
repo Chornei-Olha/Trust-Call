@@ -12,7 +12,7 @@ export const metadata = {
   title: 'TRUST-CALL',
   description: 'Аутсорсинговий кол-центр для товарного бізнесу',
   icons: {
-    icon: [{ url: '/favicon.png', type: 'image/x-icon' }],
+    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
   },
 };
 
