@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const countries = [
   { code: '+380', name: 'Україна', flag: '/images/img_image_background_shadow.png' },
@@ -16,29 +17,7 @@ export default function FinalCTA() {
   const [name, setName] = useState('Олексій');
   const [phone, setPhone] = useState('');
   const [contactMethod, setContactMethod] = useState('Дзвінок');
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   const templateParams = {
-  //     name,
-  //     phone: `${selectedCountry.code} ${phone}`,
-  //     contactMethod,
-  //   };
-
-  //   emailjs.send('service_v33od0d', 'template_dfl7sos', templateParams, 'sr_aVM5WYfgNWFCze').then(
-  //     () => {
-  //       alert('✅ Дякуємо! Ми скоро з вами зв’яжемося.');
-  //       setName('Олексій');
-  //       setPhone('');
-  //       setContactMethod('Дзвінок');
-  //     },
-  //     (error) => {
-  //       console.error('FAILED...', error.text);
-  //       alert('❌ Сталася помилка. Спробуйте ще раз.');
-  //     }
-  //   );
-  // };
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +29,7 @@ export default function FinalCTA() {
     };
 
     try {
-      // 1️⃣ Відправка через EmailJS (як було)
+      // 1️⃣ EmailJS
       await emailjs.send(
         'service_v33od0d',
         'template_dfl7sos',
@@ -58,7 +37,7 @@ export default function FinalCTA() {
         'sr_aVM5WYfgNWFCze'
       );
 
-      // 2️⃣ ДОДАЄМО: надсилання дублю в Telegram через наш API
+      // 2️⃣ Telegram
       await fetch('/api/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -69,11 +48,16 @@ export default function FinalCTA() {
         }),
       });
 
-      // 3️⃣ Повідомлення про успіх
-      alert('✅ Дякуємо! Ми скоро з вами зв’яжемося.');
+      // 3️⃣ Показуємо вікно подяки
+      setShowThankYou(true);
       setName('Олексій');
       setPhone('');
       setContactMethod('Дзвінок');
+
+      // Автоматичне закриття через 3 сек
+      setTimeout(() => {
+        setShowThankYou(false);
+      }, 3000);
     } catch (error) {
       console.error('FAILED...', error);
       alert('❌ Сталася помилка. Спробуйте ще раз.');
@@ -81,8 +65,8 @@ export default function FinalCTA() {
   };
 
   return (
-    <section id="form" className="w-full bg-white pt-14 sm:pt-16 md:pt-20 lg:pt-24">
-      <div className="contaimer mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="form" className="w-full bg-white pt-14 sm:pt-16 md:pt-20 lg:pt-24 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-t-[32px] bg-[#d9ecff]">
           <div className="absolute inset-0">
             <Image
@@ -106,7 +90,6 @@ export default function FinalCTA() {
                   </span>
                 </div>
                 <div className="flex flex-row items-center justify-between">
-                  {' '}
                   <Image
                     src="/images/user.png"
                     alt="comparison"
@@ -154,132 +137,152 @@ export default function FinalCTA() {
                       </span>
                     </div>
                     <p className="text-[24px] sm:text-[32px] md:text-[42px] font-medium font-unbounded uppercase text-black leading-tight">
-                      <span>
-                        1 місяць
-                        <br />
-                        використання
-                        <br />
-                      </span>
-                      {/* <span className="text-[#0041ff]">LP- CRM</span> */}
-                      <span>
-                        {' '}
-                        <Image
-                          src="/images/LP-CRM.svg"
-                          alt="LP-CRM logo"
-                          width={60}
-                          height={60}
-                          className="inline-block align-middle w-[150px]"
-                        />
-                      </span>
+                      1 місяць використання <br />
+                      <Image
+                        src="/images/LP-CRM.svg"
+                        alt="LP-CRM logo"
+                        width={150}
+                        height={60}
+                        className="inline-block align-middle"
+                      />
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Правая часть - Форма */}
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-[20px] sm:text-[25px] font-semibold font-inter text-[#202020] mb-3">
-                    Як до вас звертатися?
-                  </label>
-                  <input
-                    type="text"
-                    value={name}
-                    onFocus={() => name === 'Олексій' && setName('')}
-                    onBlur={() => name === '' && setName('Олексій')}
-                    onChange={(e) => setName(e.target.value)}
-                    className={`w-full px-3 sm:px-5 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] sm:text-[16px] focus:outline-none focus:ring-2 focus:ring-[#1663d3] ${
-                      name === 'Олексій' ? 'text-gray-400' : 'text-[#202020]'
-                    }`}
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-[20px] sm:text-[25px] font-semibold font-inter text-[#202020] mb-3">
-                    Ваш номер телефону
-                  </label>
-                  <div className="flex items-center">
-                    <div className="flex items-center gap-2 bg-white border border-[#e1e1e1] rounded-[32px] px-4 py-3">
-                      <Image
-                        src={selectedCountry.flag}
-                        alt={selectedCountry.name}
-                        width={20}
-                        height={14}
-                        className="w-[20px] h-[14px]"
-                      />
-                      <select
-                        value={selectedCountry.code}
-                        onChange={(e) => {
-                          const country = countries.find((c) => c.code === e.target.value);
-                          if (country) setSelectedCountry(country);
-                        }}
-                        className="bg-transparent text-[14px] text-[#202020] focus:outline-none"
-                      >
-                        {countries.map((c) => (
-                          <option key={c.code} value={c.code}>
-                            {c.code}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <input
-                      type="tel"
-                      placeholder="(99) 999-99-99"
-                      value={phone}
-                      onChange={(e) => {
-                        // Разрешаем только цифры
-                        const digitsOnly = e.target.value.replace(/\D/g, '');
-                        // Ограничиваем длину (например, максимум 9 цифр)
-                        if (digitsOnly.length <= 9) {
-                          setPhone(digitsOnly);
-                        }
-                      }}
-                      maxLength={9} // дополнительная защита
-                      inputMode="numeric" // мобильная клавиатура только с цифрами
-                      className="flex-1 px-3 sm:px-5 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] sm:text-[16px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-[20px] sm:text-[25px] font-semibold font-inter text-[#202020] mb-4">
-                    Як зручніше зв'язатися:
-                  </label>
-                  <div className="space-y-3">
-                    {['Дзвінок', 'Telegram', 'Viber'].map((item) => (
-                      <label key={item} className="flex items-center gap-3 cursor-pointer">
-                        <input
-                          type="radio"
-                          name="contact"
-                          value={item}
-                          checked={contactMethod === item}
-                          onChange={() => setContactMethod(item)}
-                          className="w-5 h-5 accent-[#1663d3]"
-                        />
-                        <span className="text-[14px] sm:text-[15px] text-[#202020]">{item}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex flex-col items-center -gap-16">
-                  <Button
-                    type="submit"
-                    variant="brand"
-                    size="sm"
-                    className="animate-pulse-scale text-[8px] sm:text-[16px] font-medium font-inter uppercase tracking-wider px-3 py-3"
+              {/* Правая часть — форма або повідомлення подяки */}
+              <AnimatePresence mode="wait">
+                {!showThankYou ? (
+                  <motion.form
+                    key="form"
+                    onSubmit={handleSubmit}
+                    className="space-y-6"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    замовити консультацію
-                  </Button>
-                  <Image
-                    src="/images/img_klipartz_24.png"
-                    alt="decoration"
-                    width={160}
-                    height={18}
-                    className="w-[80px] sm:w-[120px] md:w-[160px] h-auto"
-                  />
-                </div>
-              </form>
+                    <div>
+                      <label className="block text-[20px] sm:text-[25px] font-semibold font-inter text-[#202020] mb-3">
+                        Як до вас звертатися?
+                      </label>
+                      <input
+                        type="text"
+                        value={name}
+                        onFocus={() => name === 'Олексій' && setName('')}
+                        onBlur={() => name === '' && setName('Олексій')}
+                        onChange={(e) => setName(e.target.value)}
+                        className={`w-full px-3 sm:px-5 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] sm:text-[16px] focus:outline-none focus:ring-2 focus:ring-[#1663d3] ${
+                          name === 'Олексій' ? 'text-gray-400' : 'text-[#202020]'
+                        }`}
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[20px] sm:text-[25px] font-semibold font-inter text-[#202020] mb-3">
+                        Ваш номер телефону
+                      </label>
+                      <div className="flex items-center">
+                        <div className="flex items-center gap-2 bg-white border border-[#e1e1e1] rounded-[32px] px-4 py-3">
+                          <Image
+                            src={selectedCountry.flag}
+                            alt={selectedCountry.name}
+                            width={20}
+                            height={14}
+                            className="w-[20px] h-[14px]"
+                          />
+                          <select
+                            value={selectedCountry.code}
+                            onChange={(e) => {
+                              const country = countries.find((c) => c.code === e.target.value);
+                              if (country) setSelectedCountry(country);
+                            }}
+                            className="bg-transparent text-[14px] text-[#202020] focus:outline-none"
+                          >
+                            {countries.map((c) => (
+                              <option key={c.code} value={c.code}>
+                                {c.code}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <input
+                          type="tel"
+                          placeholder="(99) 999-99-99"
+                          value={phone}
+                          onChange={(e) => {
+                            const digits = e.target.value.replace(/\D/g, '').slice(0, 9);
+                            setPhone(digits);
+                          }}
+                          maxLength={9}
+                          inputMode="numeric"
+                          className="flex-1 px-3 sm:px-5 py-3 bg-white border border-[#e1e1e1] rounded-[32px] text-[14px] sm:text-[16px] text-[#202020] focus:outline-none focus:ring-2 focus:ring-[#1663d3]"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-[20px] sm:text-[25px] font-semibold font-inter text-[#202020] mb-4">
+                        Як зручніше зв'язатися:
+                      </label>
+                      <div className="space-y-3">
+                        {['Дзвінок', 'Telegram', 'Viber'].map((item) => (
+                          <label key={item} className="flex items-center gap-3 cursor-pointer">
+                            <input
+                              type="radio"
+                              name="contact"
+                              value={item}
+                              checked={contactMethod === item}
+                              onChange={() => setContactMethod(item)}
+                              className="w-5 h-5 accent-[#1663d3]"
+                            />
+                            <span className="text-[14px] sm:text-[15px] text-[#202020]">
+                              {item}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                      <Button
+                        type="submit"
+                        variant="brand"
+                        size="sm"
+                        className="animate-pulse-scale text-[8px] sm:text-[16px] font-medium font-inter uppercase tracking-wider px-3 py-3"
+                      >
+                        замовити консультацію
+                      </Button>
+                      <Image
+                        src="/images/img_klipartz_24.png"
+                        alt="decoration"
+                        width={160}
+                        height={18}
+                        className="w-[80px] sm:w-[120px] md:w-[160px] h-auto"
+                      />
+                    </div>
+                  </motion.form>
+                ) : (
+                  <motion.div
+                    key="thankyou"
+                    className="bg-white rounded-3xl shadow-[0_0_40px_8px_rgba(22,99,212,0.6)] p-8 sm:p-10 text-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <h3 className="text-[24px] sm:text-[26px] font-bold font-unbounded text-[#1663d3] mb-4">
+                      Дякуємо за заявку!{' '}
+                    </h3>
+                    <p className="text-[16px] sm:text-[18px] text-[#202020] leading-relaxed">
+                      Ми вже працюємо над нею — очікуйте дзвінка <strong>протягом 15 хвилин</strong>
+                      .
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
