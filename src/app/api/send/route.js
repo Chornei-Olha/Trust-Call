@@ -13,6 +13,7 @@ export async function POST(req) {
     const CHAT_ID = process.env.CHAT_ID;
 
     if (!BOT_TOKEN || !CHAT_ID) {
+      console.error('❌ Missing BOT_TOKEN or CHAT_ID');
       return NextResponse.json(
         { error: 'BOT_TOKEN and CHAT_ID must be set in environment variables' },
         { status: 500 }
@@ -28,6 +29,8 @@ export async function POST(req) {
 🔗 trust-call.com
 `;
 
+    console.log('📤 Sending to Telegram:', { BOT_TOKEN, CHAT_ID });
+
     const tgResp = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -39,13 +42,15 @@ export async function POST(req) {
       }),
     });
 
-    // безопасный парсинг ответа
-    let data = null;
+    let data;
     try {
       data = await tgResp.json();
     } catch {
-      data = { ok: false, error: 'Invalid Telegram response' };
+      data = { ok: false, error: 'Invalid JSON from Telegram' };
     }
+
+    // 💬 Добавляем лог ответа Telegram
+    console.log('📩 Telegram response:', data);
 
     if (!data.ok) {
       return NextResponse.json({ error: 'Telegram send error', details: data }, { status: 502 });
