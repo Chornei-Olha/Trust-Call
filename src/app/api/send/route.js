@@ -3,17 +3,16 @@ import { NextResponse } from 'next/server';
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, phone, message } = body;
+    const { name, phone, email, message } = body || {};
 
-    if (!name || !phone) {
-      return NextResponse.json({ error: 'Name and phone are required' }, { status: 400 });
+    if (!phone && !email) {
+      return NextResponse.json({ error: 'Phone or email required' }, { status: 400 });
     }
 
     const BOT_TOKEN = process.env.BOT_TOKEN;
     const CHAT_ID = process.env.CHAT_ID;
 
     if (!BOT_TOKEN || !CHAT_ID) {
-      console.error('❌ BOT_TOKEN or CHAT_ID not found in env');
       return NextResponse.json(
         { error: 'BOT_TOKEN and CHAT_ID must be set in environment variables' },
         { status: 500 }
@@ -21,31 +20,40 @@ export async function POST(req) {
     }
 
     const text = `
-<b>📩 Нова заявка з сайту TrustCall</b>\n
-👤 <b>Ім’я:</b> ${name}\n
-📞 <b>Телефон:</b> ${phone}\n
-💬 <b>Повідомлення:</b> ${message || '—'}
+🔥 <b>Нова заявка з сайту</b>
+👤 <b>Ім’я:</b> ${name || '-'}
+📞 <b>Телефон:</b> ${phone || '-'}
+✉️ <b>Email:</b> ${email || '-'}
+💬 <b>Повідомлення:</b> ${message || '-'}
+🔗 trust-call.com
 `;
 
-    const telegramRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    const tgResp = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         chat_id: CHAT_ID,
         text,
         parse_mode: 'HTML',
+        disable_web_page_preview: true,
       }),
     });
 
-    if (!telegramRes.ok) {
-      const errorText = await telegramRes.text();
-      console.error('Telegram API error:', errorText);
-      throw new Error(errorText);
+    // безопасный парсинг ответа
+    let data = null;
+    try {
+      data = await tgResp.json();
+    } catch {
+      data = { ok: false, error: 'Invalid Telegram response' };
     }
 
-    return NextResponse.json({ ok: true }, { status: 200 });
-  } catch (err) {
-    console.error('❌ Error in /api/send:', err);
-    return NextResponse.json({ error: String(err) }, { status: 500 });
+    if (!data.ok) {
+      return NextResponse.json({ error: 'Telegram send error', details: data }, { status: 502 });
+    }
+
+    return NextResponse.json({ ok: true });
+  } catch (e) {
+    console.error('❌ /api/send error:', e);
+    return NextResponse.json({ error: 'Server error', details: String(e) }, { status: 500 });
   }
 }
