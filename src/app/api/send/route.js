@@ -5,14 +5,15 @@ export async function POST(req) {
     const body = await req.json();
     const { name, phone, message } = body;
 
-    if (!phone && !name) {
-      return NextResponse.json({ error: 'Name or phone required' }, { status: 400 });
+    if (!name || !phone) {
+      return NextResponse.json({ error: 'Name and phone are required' }, { status: 400 });
     }
 
     const BOT_TOKEN = process.env.BOT_TOKEN;
     const CHAT_ID = process.env.CHAT_ID;
 
     if (!BOT_TOKEN || !CHAT_ID) {
+      console.error('❌ BOT_TOKEN or CHAT_ID not found in env');
       return NextResponse.json(
         { error: 'BOT_TOKEN and CHAT_ID must be set in environment variables' },
         { status: 500 }
@@ -20,13 +21,13 @@ export async function POST(req) {
     }
 
     const text = `
-<b>Нова заявка з сайту</b>\n
-👤 Ім'я: ${name}\n
-📞 Телефон: ${phone}\n
-💬 Повідомлення: ${message || '—'}
-    `;
+<b>📩 Нова заявка з сайту TrustCall</b>\n
+👤 <b>Ім’я:</b> ${name}\n
+📞 <b>Телефон:</b> ${phone}\n
+💬 <b>Повідомлення:</b> ${message || '—'}
+`;
 
-    const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    const telegramRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -36,14 +37,15 @@ export async function POST(req) {
       }),
     });
 
-    if (!res.ok) {
-      const errorText = await res.text();
-      throw new Error(`Telegram API error: ${errorText}`);
+    if (!telegramRes.ok) {
+      const errorText = await telegramRes.text();
+      console.error('Telegram API error:', errorText);
+      throw new Error(errorText);
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true }, { status: 200 });
   } catch (err) {
-    console.error('❌ Error sending Telegram message:', err);
-    return NextResponse.json({ ok: false, error: String(err) }, { status: 500 });
+    console.error('❌ Error in /api/send:', err);
+    return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 }

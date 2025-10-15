@@ -37,16 +37,28 @@ export default function PopupForm({ isOpen, onClose }: { isOpen: boolean; onClos
         'sr_aVM5WYfgNWFCze'
       );
 
-      // 2️⃣ Отправляем в Telegram
+      // 2️⃣ Отправляем в Telegram через наш API
       const tgResp = await fetch('/api/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(templateParams),
+        body: JSON.stringify({
+          name,
+          phone: `${selectedCountry.code} ${phone}`,
+          message: `Заявка з PopupForm (${contactMethod})`,
+        }),
       });
 
-      const tgData = await tgResp.json();
-      if (!tgData.ok) {
-        console.error('❌ Ошибка Telegram:', tgData);
+      // Безопасно читаем ответ (даже если пустой)
+      let tgData = null;
+      try {
+        tgData = await tgResp.json();
+      } catch {
+        console.warn('⚠️ Telegram response not JSON, skipping parse.');
+      }
+
+      if (!tgResp.ok) {
+        console.error('❌ Telegram request failed', tgData);
+        throw new Error('Telegram API error');
       }
 
       // 3️⃣ Показываем окно благодарности
