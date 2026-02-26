@@ -24,16 +24,6 @@ type ClientReviewsProps = {
 const testimonials: Testimonial[] = [
   {
     id: '1',
-    name: 'Дмитро Романюк',
-    niche: 'Продажі через односторінкові сайти',
-    leadCount: '400+ ЛІДІВ НА ДЕНЬ',
-    rating: 5,
-    avatar: '/images/img_img.png',
-    socialHandle: '@TheKingOdessa',
-    videoUrl: 'https://www.youtube.com/shorts/3hB22QG3JS8',
-  },
-  {
-    id: '2',
     name: 'Максим Ліповський',
     niche: 'Власник інтернет магазину',
     leadCount: '150+ ЛІДІВ НА ДЕНЬ',
@@ -43,14 +33,24 @@ const testimonials: Testimonial[] = [
     videoUrl: 'https://www.youtube.com/watch?v=DtJC0eTs-2s&feature=youtu.be',
   },
   {
-    id: '3',
+    id: '2',
     name: 'Єлизавета Левченко',
     niche: 'Продажі через односторінкові сайти',
     leadCount: '250+ ЛІДІВ НА ДЕНЬ',
     rating: 5,
-    avatar: '/images/img_img_1.png',
+    avatar: '/images/testimonial_2.png',
     socialHandle: '@SergEEvna_1',
     videoUrl: 'https://www.youtube.com/watch?v=6ZBjOX6kils',
+  },
+  {
+    id: '3',
+    name: 'Дмитро Романюк',
+    niche: 'Продажі через односторінкові сайти',
+    leadCount: '400+ ЛІДІВ НА ДЕНЬ',
+    rating: 5,
+    avatar: '/images/testimonial_3.png',
+    socialHandle: '@TheKingOdessa',
+    videoUrl: 'https://www.youtube.com/shorts/3hB22QG3JS8',
   },
 ];
 
@@ -116,7 +116,7 @@ const ClientReviews: React.FC = () => {
                   </div>
 
                   <Image
-                    src={`/images/img_img${index === 0 ? '' : index === 1 ? '_184x328' : '_1'}.png`}
+                    src={`/images/testimonial${index === 0 ? '' : index === 1 ? '_2' : '_3'}.png`}
                     alt="video thumbnail"
                     width={500}
                     height={280}

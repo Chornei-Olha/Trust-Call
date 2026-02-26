@@ -39,8 +39,8 @@ if (empty($name) || empty($phone)) {
     exit;
 }
 
-$BOT_TOKEN = '6749538664:AAGZ4A1mhwRPDMLx9F26g5Xf0CrH6XLb6B0';
-$CHAT_ID   = '-1002402429379';
+$BOT_TOKEN = '7963379532:AAH0WImsz9e33Yp9WX1Ne1LkpnOc6dn95oQ';
+$CHAT_ID   = '-1003116817537';
 
 $text  = "📩 <b>Нова заявка з сайту Trust-Call</b>\n\n";
 $text .= "👤 <b>Ім’я:</b> " . htmlspecialchars($name) . "\n";

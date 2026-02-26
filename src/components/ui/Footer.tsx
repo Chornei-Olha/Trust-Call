@@ -126,10 +126,6 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row justify-between items-start gap-6 pt-8 border-t border-white/20">
           <div className="space-y-2">
             <p className="text-[12px] font-bold text-white">
-              <a href="tel:+380971552677" className="hover:underline">
-                +380971552677
-              </a>{' '}
-              ( Олександр Х. – власник )<br />
               <a href="tel:+380963411753" className="hover:underline">
                 +380963411753
               </a>{' '}
@@ -144,6 +140,27 @@ export default function Footer() {
             </p>
           </div>
         </div>{' '}
+        <div
+          className="fixed bottom-24 md:bottom-36 right-5 z-50 w-16 sm:w-20 lg:w-[98px] h-16 sm:h-20 lg:h-[98px] 
+             rounded-full bg-white/10 backdrop-blur-sm
+             shadow-[0_0_20px_5px_rgba(59,130,246,0.7)]
+             flex items-center justify-center"
+        >
+          <a href="https://t.me/trust_callcenter" target="_blank">
+            <div
+              className="w-full h-full flex items-center justify-center cursor-pointer rounded-full
+                 transition-transform active:scale-95"
+            >
+              <Image
+                src="/images/telegram.png"
+                alt="Telegram Message"
+                width={60}
+                height={60}
+                className="w-12 sm:w-14 lg:w-[60px] h-12 sm:h-14 lg:h-[60px] animate-wiggle"
+              />
+            </div>
+          </a>
+        </div>
         <div
           className="fixed bottom-5 right-5 z-50 w-16 sm:w-20 lg:w-[98px] h-16 sm:h-20 lg:h-[98px] 
              rounded-full bg-white/10 backdrop-blur-sm
