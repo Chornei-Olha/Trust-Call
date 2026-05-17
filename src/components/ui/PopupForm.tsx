@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '@/components/ui/Button';
 
@@ -23,20 +23,20 @@ export default function PopupForm({ isOpen, onClose }: { isOpen: boolean; onClos
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const templateParams = {
-      name,
-      phone: `${selectedCountry.code} ${phone}`,
-      contactMethod,
-    };
+    // const templateParams = {
+    //   name,
+    //   phone: `${selectedCountry.code} ${phone}`,
+    //   contactMethod,
+    // };
 
     try {
       // 1️⃣ Отправляем через EmailJS
-      await emailjs.send(
-        'service_v33od0d',
-        'template_dfl7sos',
-        templateParams,
-        'sr_aVM5WYfgNWFCze'
-      );
+      // await emailjs.send(
+      //   'service_v33od0d',
+      //   'template_dfl7sos',
+      //   templateParams,
+      //   'sr_aVM5WYfgNWFCze'
+      // );
 
       // 2️⃣ Отправляем в Telegram через наш API
       const tgResp = await fetch('https://trust-call.com/send.php', {

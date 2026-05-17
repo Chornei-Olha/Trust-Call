@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { useState } from 'react';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const countries = [
@@ -23,20 +23,20 @@ export default function FinalCTA() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const templateParams = {
-      name,
-      phone: `${selectedCountry.code} ${phone}`,
-      contactMethod,
-    };
+    // const templateParams = {
+    //   name,
+    //   phone: `${selectedCountry.code} ${phone}`,
+    //   contactMethod,
+    // };
 
     try {
       // 1️⃣ EmailJS
-      await emailjs.send(
-        'service_v33od0d',
-        'template_dfl7sos',
-        templateParams,
-        'sr_aVM5WYfgNWFCze'
-      );
+      // await emailjs.send(
+      //   'service_v33od0d',
+      //   'template_dfl7sos',
+      //   templateParams,
+      //   'sr_aVM5WYfgNWFCze'
+      // );
 
       // 2️⃣ Telegram
       await fetch('https://trust-call.com/send.php', {
