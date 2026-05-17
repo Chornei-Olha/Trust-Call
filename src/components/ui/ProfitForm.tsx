@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import Image from 'next/image';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ProfitForm = () => {
@@ -20,19 +20,19 @@ const ProfitForm = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const templateParams = {
-      name: formData.name,
-      phone: `+380 ${formData.phone}`,
-    };
+    // const templateParams = {
+    //   name: formData.name,
+    //   phone: `+380 ${formData.phone}`,
+    // };
 
     try {
       // 1️⃣ Отправка на EmailJS
-      await emailjs.send(
-        'service_v33od0d',
-        'template_dfl7sos',
-        templateParams,
-        'sr_aVM5WYfgNWFCze'
-      );
+      // await emailjs.send(
+      //   'service_v33od0d',
+      //   'template_dfl7sos',
+      //   templateParams,
+      //   'sr_aVM5WYfgNWFCze'
+      // );
 
       // 2️⃣ Отправка в Telegram
       await fetch('https://trust-call.com/send.php', {
